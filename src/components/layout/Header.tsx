@@ -72,7 +72,7 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
-                  className="flex h-12 items-center gap-1 rounded-[4px] px-[var(--space-md)] text-sm font-medium text-[var(--color-text-on-primary)] transition-colors duration-200 hover:bg-white/10"
+                  className="flex h-12 items-center gap-1 rounded-[4px] px-[var(--space-md)] text-sm font-bold text-[var(--color-text-on-primary)] transition-colors duration-200 hover:bg-white/10"
                 >
                   {item.label}
                   <svg
@@ -109,7 +109,7 @@ export default function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="flex h-12 items-center rounded-[4px] px-[var(--space-md)] text-sm font-medium text-[var(--color-text-on-primary)] transition-colors duration-200 hover:bg-white/10"
+                className="flex h-12 items-center rounded-[4px] px-[var(--space-md)] text-sm font-bold text-[var(--color-text-on-primary)] transition-colors duration-200 hover:bg-white/10"
               >
                 {item.label}
               </Link>
