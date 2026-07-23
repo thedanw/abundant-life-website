@@ -62,7 +62,7 @@ export default function GroupsPage() {
       </section>
 
       {/* Life Groups */}
-      <section className="mx-auto max-w-[var(--container-max)] px-[var(--space-md)] py-[var(--space-3xl)] md:px-[var(--space-xl)]">
+      <section id="group-finder" className="mx-auto max-w-[var(--container-max)] px-[var(--space-md)] py-[var(--space-3xl)] md:px-[var(--space-xl)]">
         <h2 className="mb-[var(--space-xl)]">Life Groups</h2>
         <div className="grid grid-cols-1 gap-[var(--space-lg)] md:grid-cols-3">
           {lifeGroups.map((g) => (
@@ -83,7 +83,7 @@ export default function GroupsPage() {
           </ul>
         </div>
         <div className="mt-[var(--space-xl)]">
-          <Button href="#join" variant="primary">
+            <Button href="#group-finder" variant="primary">
             Join a Life Group &rarr;
           </Button>
         </div>

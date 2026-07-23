@@ -341,7 +341,7 @@ export default function ServePage() {
       {/* Application Form */}
       <section id="application" className="mx-auto max-w-2xl px-[var(--space-md)] py-[var(--space-3xl)] md:px-[var(--space-xl)]">
         <h2 className="mb-[var(--space-xl)] text-center">Apply to Serve</h2>
-        <form className="space-y-[var(--space-md)]" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-[var(--space-md)]" action="/api/serve" method="POST">
           <div>
             <label htmlFor="serve-name" className="block text-sm font-medium text-[var(--color-text-primary)]">Your Name</label>
             <input type="text" id="serve-name" name="name" className="mt-1 block w-full rounded-[var(--radius-md)] border-2 border-[var(--color-accent-sage)] px-[var(--space-md)] py-[var(--space-sm)] text-sm text-[var(--color-text-primary)] transition-colors focus:border-[var(--color-primary)] focus:shadow-[0_0_0_3px_rgba(0,103,71,0.15)] focus:outline-none" />
@@ -397,8 +397,11 @@ export default function ServePage() {
         </form>
       </section>
 
+      {/* Host/Lead Group anchors for cross-page links */}
+      <div id="host-group" className="scroll-mt-20" />
+
       {/* Leadership Pathways */}
-      <section className="bg-[var(--color-accent-sage)]/20 py-[var(--space-3xl)]">
+      <section id="lead-group" className="bg-[var(--color-accent-sage)]/20 py-[var(--space-3xl)]">
         <div className="mx-auto max-w-[var(--container-max)] px-[var(--space-md)] md:px-[var(--space-xl)]">
           <h2 className="mb-[var(--space-xl)] text-center">Leadership Pathways</h2>
           <p className="mx-auto mb-[var(--space-xl)] max-w-xl text-center text-[var(--color-text-primary)]">

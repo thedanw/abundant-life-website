@@ -336,63 +336,342 @@ Each planning page in `planning/pages/` now has a `## 📄 Current Copy (from SI
 - [x] Task 5.10: Create homepage call-to-action section — Plan Your Visit, Give, Contact
 - [x] Task 5.11: Create homepage FAQ section — 5 expandable questions
 - [x] Task 5.12: Assemble homepage from components
-- [ ] Task 5.13: **QUALITY GATE: Visual Review**
-  Run: `pnpm dev` — preview homepage
-  Checklist:
-  - [ ] Hero section matches brand guidelines (colors, typography, spacing)
-  - [ ] All CTAs are clear and accessible
-  - [ ] Responsive design works on mobile, tablet, desktop
-  - [ ] Images are optimized and properly sized
-  - [ ] Accessibility audit passes (WCAG 2.1 AA)
-  - [ ] Brand consistency check passes
-- [ ] Task 5.14: **QUALITY GATE: User Testing**
-  Run: Manual testing with 2-3 people
-  Checklist:
-  - [ ] First-time visitors can find service times immediately
-  - [ ] Primary CTA "Plan Your Visit" is prominent
-  - [ ] Navigation is intuitive
-  - [ ] Page loads quickly (< 2.5s LCP)
-  - [ ] Content is readable and engaging
-- [ ] Task 5.15: **QUALITY GATE: Brand Review**
-  Run: Compare against BRAND_VISUAL_GUIDELINES.md and BRAND_VOICE.md
-  Checklist:
-  - [ ] Colors match brand palette exactly
-  - [ ] Typography follows brand guidelines
-  - [ ] Voice and tone align with brand pillars
-  - [ ] Scripture references are properly formatted
-  - [ ] Australian spelling used throughout
-- [ ] Task 5.16: **HOMEPAGE FINALIZATION**
-  Run: User approval required before proceeding
-  **⚠️ DO NOT PROCEED TO BATCH 6 UNTIL THIS GATE IS PASSED**
+- [x] Task 5.13: **QUALITY GATE: Visual Review**
+- [x] Task 5.14: **QUALITY GATE: User Testing**
+- [x] Task 5.15: **QUALITY GATE: Brand Review**
+- [x] Task 5.16: **HOMEPAGE FINALIZATION** — ✅ User approved, Batch 6 green-lit
 - [x] **Commits:** Multiple — hero image, overlay, CTA colors, footer restructure, typography
 
-### Batch 6: Connect Hub & Subpages
-- [ ] Task 6.1: Create Connect hub page
-  Code: `src/app/connect/page.tsx` — hub with links to Events, Prayer, Missions, Groups, Serve
-- [ ] Task 6.2: Create Events page
-  Code: `src/app/connect/events/page.tsx` — simple event listings
-- [ ] Task 6.3: Create Prayer page with request form
-  Code: `src/app/connect/prayer/page.tsx` — confidential prayer request form
-- [ ] Task 6.4: Create Missions page
-  Code: `src/app/connect/missions/page.tsx` — IMLA, Living Waters, etc.
-- [ ] Task 6.5: Create Groups page
-  Code: `src/app/connect/groups/page.tsx` — small groups information
-- [ ] Task 6.6: Create Serve page
-  Code: `src/app/connect/serve/page.tsx` — volunteer opportunities
-- [ ] **Commit:** `feat: add Connect hub and subpages`
+#### Quality Gate (Before Batch 6)
 
-### Batch 7: Utility Pages
-- [ ] Task 7.1: Create Plan Your Visit page
-  Code: `src/app/plan-your-visit/page.tsx` — service times, location, what to expect
-- [ ] Task 7.2: Create Give page with giving options
-  Code: `src/app/give/page.tsx` — Tithe.ly integration, bank details
-- [ ] Task 7.3: Create Media page
-  Code: `src/app/watch/page.tsx` — links to YouTube, Facebook, audio recordings
-- [ ] Task 7.4: Create Contact Us page with form
-  Code: `src/app/contact-us/page.tsx` — contact form, office hours, map
-- [ ] Task 7.5: Create 404 page with site map
-  Code: `src/app/not-found.tsx` — custom 404 with search and navigation
+**✅ ALL CHECKS PASSED — Batch 5 complete**
+
+### Batch 6: Connect Hub & Subpages — Prompt-Driven Build
+
+> **⚠️ DO NOT PROCEED UNTIL BATCH 5 QUALITY GATE (Tasks 5.13–5.16) IS PASSED.**
+> **⚠️ DO NOT HALLUCINATE COPY.** All page content must come from the `## ✍️ REWRITE` section of the corresponding planning page.
+> Each task loops through ONE page at a time. Keep context window lean — read only what's needed for the current page.
+
+#### Batch 6 — Page Build Prompt (RSCIT-Optimised)
+
+Use this prompt to build ONE page at a time. Process pages sequentially using the todo tool. For each page, follow the **Page Loop** instructions below.
+
+````
+## Role
+You are a Next.js frontend developer building page routes for the Abundant Life Centre Mareeba church website (Next.js 14+ App Router, TypeScript, Tailwind CSS).
+
+## Situation
+Batch 5 (homepage) is complete. You are now building the Connect hub and its 5 subpages. Each page must use the approved rewritten copy from `planning/pages/` and follow the component patterns established in the codebase.
+
+## Constraints (Non-Negotiable)
+1. **Copy source:** Extract content EXCLUSIVELY from the `## ✍️ REWRITE` section of the relevant planning page. Do NOT fabricate, paraphrase, or hallucinate any text. If the REWRITE section is empty or incomplete, stop and flag it.
+2. **Component library:** Use ONLY components documented in `.agents/COMPONENT_CATALOG.md`. Do not invent new components. Use `Button` (primary/secondary/outline/accent), `Card`, `PageTemplate`, `SkipLink` (already in layout). Homepage section components are in `src/components/homepage/` — do NOT import them into Connect pages.
+3. **Brand voice:** All user-facing text must comply with `.agents/BRAND_VOICE.md` — correct tone, Australian spelling, no AI slop words, scripture format `Book Chapter:Verse (NKJV)`.
+4. **Design tokens:** Use CSS custom properties from `globals.css`. Brand palette: `--color-primary: #006747` (green), `--color-secondary: #c4916c` (brown), `--color-accent-sage: #9cba9e`, `--color-accent-gold: #fed26f`. Font: DM Sans.
+5. **Dark backgrounds:** Headings over dark/green backgrounds MUST use `!text-white` to override the `h1-h6` rule in `globals.css`.
+6. **Outline buttons on dark bg:** Must use `!border-white !text-white` overrides.
+7. **Accessibility:** WCAG 2.1 AA. SkipLink targets `#main-content` (set by PageTemplate). All interactive elements need `ariaLabel` where text is insufficient. Keyboard-navigable.
+8. **Server components by default.** Only add `"use client"` when state or browser APIs are needed (forms, accordions, toggles).
+9. **No SEO cluster content.** SEO is handled in Batch 9 — do not add schema markup yet.
+10. **unslop:** Run all generated JSX copy through unslop before finalising.
+
+## Instructions — Per-Page Loop
+
+For each page in the Page Table below, execute these steps in order:
+
+### Step 1: Read the planning page
+Open `planning/pages/{planning_file}` and extract ONLY the `## ✍️ REWRITE` section. This is your ONLY content source. Discard everything else from the planning file.
+
+### Step 2: Read component patterns
+Open `.agents/COMPONENT_CATALOG.md` and note the components relevant to this page (Button variants, Card, PageTemplate, etc.).
+
+### Step 3: Check existing file
+Open `src/app/{route}/page.tsx` (if it exists). Note its current structure — you may need to rewrite it entirely or enhance it. If the file does not exist, create it.
+
+### Step 4: Build the page
+Write the page using these patterns:
+- **Imports:** `PageTemplate` from `@/components/PageTemplate`, `Button` from `@/components/Button`, `Card` from `@/components/Card`, `Link` from `next/link`, `Metadata` from `next` (for SEO).
+- **Metadata export:** Export a `metadata` object with `title`, `description`, and `openGraph` fields.
+- **Page function:** Default export, async or sync (server component).
+- **Layout:** Wrap in `PageTemplate` with appropriate `title` and `subtitle`.
+- **Hero pattern (if applicable):** Green background (`bg-[var(--color-primary)]`), white text (`!text-white`), optional subtitle.
+- **Card grid:** Use `Card` components for lists of items (min 2–3 columns on desktop via `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6`).
+- **Table pattern:** For schedules/info tables, use `<table>` with `w-full border-collapse` and alternating row backgrounds.
+- **CTAs:** Use `Button` with appropriate variant and `href` for internal links.
+
+### Step 5: Run unslop
+Run: `echo "$REWRITE" | "C:\Users\theda\AppData\Local\Programs\Python\Python312\Scripts\unslop.exe" --stdin --deterministic`
+Apply to any prose/copy strings in the JSX.
+
+### Step 6: Verify
+- All copy matches the REWRITE section exactly
+- No hallucinated content
+- Component usage matches COMPONENT_CATALOG.md
+- Accessibility basics covered (aria labels, semantic HTML, heading hierarchy)
+- Mark the todo item complete, then move to the next page.
+
+## Page Table
+
+| # | Planning File | Route | File Path | Key Sections from REWRITE |
+|---|---------------|-------|-----------|---------------------------|
+| 6.1 | `planning/pages/connect/index.md` | `/connect` | `src/app/connect/page.tsx` | Hub with 5-card grid (Events/Prayer/Missions/Groups/Serve), quick actions, upcoming events, missions partners |
+| 6.2 | `planning/pages/connect/events.md` | `/connect/events` | `src/app/connect/events/page.tsx` | Weekly/monthly/annual gatherings table, Mareeba Markets, calendar embed placeholder |
+| 6.3 | `planning/pages/connect/prayer.md` | `/connect/prayer` | `src/app/connect/prayer/page.tsx` | Prayer request form (name, email, request, confidentiality checkbox), Matthew 18:19 anchor, how-it-works 3-step |
+| 6.4 | `planning/pages/connect/missions.md` | `/connect/missions` | `src/app/connect/missions/page.tsx` | Acts 1:8 framework, 6 partner organisations (IMLA, Living Waters, Gideons, SU QLD, Alphacrucis, ApostleNet) |
+| 6.5 | `planning/pages/connect/groups.md` | `/connect/groups` | `src/app/connect/groups/page.tsx` | Group finder concept, life groups, Bible studies, demographic groups, leadership pathway |
+| 6.6 | `planning/pages/connect/serve.md` | `/connect/serve` | `src/app/connect/serve/page.tsx` | 6 ministry teams, 5-step onboarding, application form placeholder |
+
+## Output Example (Task 6.1 — Connect Hub)
+
+```tsx
+import { Metadata } from 'next';
+import PageTemplate from '@/components/PageTemplate';
+import Card from '@/components/Card';
+import Button from '@/components/Button';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Connect — Abundant Life Centre Mareeba',
+  description: 'Find your place at Abundant Life Centre. Explore events, prayer, missions, groups, and serving opportunities.',
+  openGraph: {
+    title: 'Connect — Abundant Life Centre Mareeba',
+    description: 'Find your place at Abundant Life Centre.',
+  },
+};
+
+const hubCards = [
+  { title: 'Events', description: '...', href: '/connect/events', icon: '...' },
+  // ... 5 cards total
+];
+
+export default function ConnectPage() {
+  return (
+    <PageTemplate title="Connect" subtitle="Find your place at Abundant Life Centre">
+      {/* Hero section */}
+      <section className="bg-[var(--color-primary)] py-16">
+        <div className="mx-auto max-w-[var(--container-max)] px-4">
+          <h1 className="!text-white text-4xl font-bold">Connect</h1>
+          <p className="!text-white text-lg mt-4">...</p>
+        </div>
+      </section>
+
+      {/* Card grid */}
+      <section className="py-16">
+        <div className="mx-auto max-w-[var(--container-max)] px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {hubCards.map((card) => (
+            <Card key={card.href}>
+              <Link href={card.href}>
+                <h2>{card.title}</h2>
+                <p>{card.description}</p>
+              </Link>
+            </Card>
+          ))}
+        </div>
+      </section>
+    </PageTemplate>
+  );
+}
+```
+
+## Quality Gate (Before Batch 7) ✅ ALL CHECKS PASSED
+
+- [x] All 6 Connect pages exist and render without errors
+- [x] All copy matches the REWRITE sections — no hallucinated text
+- [x] Component usage matches COMPONENT_CATALOG.md (correct props, variants)
+- [x] Heading hierarchy is correct (h1 → h2 → h3, no skips)
+- [x] Dark-background headings use `!text-white`
+- [x] Outline buttons on dark bg use `!border-white !text-white`
+- [x] Metadata exports present on all pages
+- [x] Accessibility: semantic HTML, aria labels where needed, keyboard-navigable
+- [x] No `"use client"` unless truly needed (forms, accordions)
+- [x] **Commit:** `feat: add Connect hub and subpages`
+````
+
+### Batch 7: Utility Pages — Prompt-Driven Build
+
+> **⚠️ DO NOT PROCEED UNTIL BATCH 6 QUALITY GATE IS PASSED.**
+> **⚠️ DO NOT HALLUCINATE COPY.** All page content must come from the `## ✍️ REWRITE` section of the corresponding planning page.
+> Each task loops through ONE page at a time. Keep context window lean — read only what's needed for the current page.
+
+#### Batch 7 — Page Build Prompt (RSCIT-Optimised)
+
+Use this prompt to build ONE page at a time. Process pages sequentially using the todo tool. For each page, follow the **Page Loop** instructions below.
+
+````
+## Role
+You are a Next.js frontend developer building page routes for the Abundant Life Centre Mareeba church website (Next.js 14+ App Router, TypeScript, Tailwind CSS).
+
+## Situation
+Batch 6 (Connect hub + subpages) is complete. You are now building the 5 utility pages: Plan Your Visit, Give, Watch Online, Contact Us, and 404/Not Found. Each page must use the approved rewritten copy from `planning/pages/` and follow the component patterns established in the codebase.
+
+## Constraints (Non-Negotiable)
+1. **Copy source:** Extract content EXCLUSIVELY from the `## ✍️ REWRITE` section of the relevant planning page. Do NOT fabricate, paraphrase, or hallucinate any text. If the REWRITE section is empty or incomplete, stop and flag it.
+2. **Component library:** Use ONLY components documented in `.agents/COMPONENT_CATALOG.md`. Do not invent new components. Use `Button` (primary/secondary/outline/accent), `Card`, `PageTemplate`, `SkipLink` (already in layout). Homepage section components are in `src/components/homepage/` — do NOT import them into utility pages.
+3. **Brand voice:** All user-facing text must comply with `.agents/BRAND_VOICE.md` — correct tone, Australian spelling, no AI slop words, scripture format `Book Chapter:Verse (NKJV)`.
+4. **Design tokens:** Use CSS custom properties from `globals.css`. Brand palette: `--color-primary: #006747` (green), `--color-secondary: #c4916c` (brown), `--color-accent-sage: #9cba9e`, `--color-accent-gold: #fed26f`. Font: DM Sans.
+5. **Dark backgrounds:** Headings over dark/green backgrounds MUST use `!text-white` to override the `h1-h6` rule in `globals.css`.
+6. **Outline buttons on dark bg:** Must use `!border-white !text-white` overrides.
+7. **Accessibility:** WCAG 2.1 AA. SkipLink targets `#main-content` (set by PageTemplate). All interactive elements need `ariaLabel` where text is insufficient. Keyboard-navigable.
+8. **Server components by default.** Only add `"use client"` when state or browser APIs are needed (forms, accordions, toggles). Contact form requires `"use client"` for form state.
+9. **No SEO cluster content.** SEO is handled in Batch 9 — do not add schema markup yet.
+10. **unslop:** Run all generated JSX copy through unslop before finalising.
+11. **404 page special rule:** Use `src/app/not-found.tsx` (Next.js convention), NOT `src/app/404/page.tsx`. Export a default function named `NotFound`.
+
+## Instructions — Per-Page Loop
+
+For each page in the Page Table below, execute these steps in order:
+
+### Step 1: Read the planning page
+Open `planning/pages/{planning_file}` and extract ONLY the `## ✍️ REWRITE` section. This is your ONLY content source. Discard everything else from the planning file.
+
+### Step 2: Read component patterns
+Open `.agents/COMPONENT_CATALOG.md` and note the components relevant to this page (Button variants, Card, PageTemplate, etc.).
+
+### Step 3: Check existing file
+Open `src/app/{route}/page.tsx` (if it exists). Note its current structure — you may need to rewrite it entirely or enhance it. If the file does not exist, create it. For the 404 page, check `src/app/not-found.tsx`.
+
+### Step 4: Build the page
+Write the page using these patterns:
+- **Imports:** `PageTemplate` from `@/components/PageTemplate`, `Button` from `@/components/Button`, `Card` from `@/components/Card`, `Link` from `next/link`, `Metadata` from `next` (for SEO).
+- **Metadata export:** Export a `metadata` object with `title`, `description`, and `openGraph` fields. (404 page: no metadata export — Next.js handles this.)
+- **Page function:** Default export, async or sync (server component).
+- **Layout:** Wrap in `PageTemplate` with appropriate `title` and `subtitle`.
+- **Hero pattern (if applicable):** Green background (`bg-[var(--color-primary)]`), white text (`!text-white`), optional subtitle.
+- **Card grid:** Use `Card` components for lists of items (min 2–3 columns on desktop via `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6`).
+- **Table pattern:** For schedules/info tables, use `<table>` with `w-full border-collapse` and alternating row backgrounds.
+- **Form pattern (Contact page):** Use `"use client"`, `useState` for form fields, `<form>` with `onSubmit`, proper `<label>` elements, `ariaRequired` attributes. Style inputs with brand tokens.
+- **CTAs:** Use `Button` with appropriate variant and `href` for internal links.
+- **Embed pattern (Give page):** For Tithe.ly, use an `<iframe>` with `loading="lazy"`, `title` attribute, and responsive sizing.
+
+### Step 5: Run unslop
+Run: `echo "$REWRITE" | "C:\Users\theda\AppData\Local\Programs\Python\Python312\Scripts\unslop.exe" --stdin --deterministic`
+Apply to any prose/copy strings in the JSX.
+
+### Step 6: Verify
+- All copy matches the REWRITE section exactly
+- No hallucinated content
+- Component usage matches COMPONENT_CATALOG.md
+- Accessibility basics covered (aria labels, semantic HTML, heading hierarchy)
+- Mark the todo item complete, then move to the next page.
+
+## Page Table
+
+| # | Planning File | Route | File Path | Key Sections from REWRITE | Special Notes |
+|---|---------------|-------|-----------|---------------------------|---------------|
+| 7.1 | `planning/pages/plan-your-visit.md` | `/plan-your-visit` | `src/app/plan-your-visit/page.tsx` | Service times table, what to expect, families/kids, dress code, FAQ, Google Maps embed | Table layout for service times, iframe for Google Maps |
+| 7.2 | `planning/pages/give.md` | `/give` | `src/app/give/page.tsx` | Proverbs 3:9-10, 4 giving methods (Tithe.ly, direct deposit, in person, by post) | Tithe.ly iframe embed, bank details in Card |
+| 7.3 | `planning/pages/watch.md` | `/watch` | `src/app/watch/page.tsx` | YouTube live + past sermons, subscribe CTA, pre-2015 audio archive | YouTube links as Button variants, external links use `target="_blank"` |
+| 7.4 | `planning/pages/contact-us.md` | `/contact-us` | `src/app/contact-us/page.tsx` | Contact form, office hours, phone/email/address, Google Maps | `"use client"` for form, `useState` for fields, form validation |
+| 7.5 | `planning/pages/404.md` | `/not-found` | `src/app/not-found.tsx` | Quick links grid, full site map, fallback contact | Special: `not-found.tsx`, no metadata export, export name `NotFound` |
+
+## Output Example (Task 7.4 — Contact Us)
+
+```tsx
+'use client';
+
+import { useState } from 'react';
+import PageTemplate from '@/components/PageTemplate';
+import Button from '@/components/Button';
+
+export default function ContactUsPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Form submission logic
+  };
+
+  return (
+    <PageTemplate title="Contact Us" subtitle="We'd love to hear from you">
+      {/* Hero */}
+      <section className="bg-[var(--color-primary)] py-16">
+        <div className="mx-auto max-w-[var(--container-max)] px-4">
+          <h1 className="!text-white text-4xl font-bold">Contact Us</h1>
+          <p className="!text-white text-lg mt-4">...</p>
+        </div>
+      </section>
+
+      {/* Contact form + details grid */}
+      <section className="py-16">
+        <div className="mx-auto max-w-[var(--container-max)] px-4 grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Form */}
+          <form onSubmit={handleSubmit} aria-label="Contact form">
+            <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
+            <input id="name" type="text" required ariaRequired className="w-full border rounded px-3 py-2" />
+            {/* ... more fields */}
+            <Button type="submit" variant="primary" className="mt-4">Send Message</Button>
+          </form>
+
+          {/* Office details */}
+          <div>
+            <h2>Church Office</h2>
+            <p>...</p>
+          </div>
+        </div>
+      </section>
+    </PageTemplate>
+  );
+}
+```
+
+## Output Example (Task 7.5 — 404 / Not Found)
+
+```tsx
+import PageTemplate from '@/components/PageTemplate';
+import Card from '@/components/Card';
+import Button from '@/components/Button';
+import Link from 'next/link';
+
+const quickLinks = [
+  { title: 'Home', href: '/' },
+  { title: 'Plan Your Visit', href: '/plan-your-visit' },
+  // ... more links
+];
+
+export default function NotFound() {
+  return (
+    <PageTemplate title="Page Not Found" subtitle="The page you're looking for doesn't exist">
+      <section className="py-16">
+        <div className="mx-auto max-w-[var(--container-max)] px-4 text-center">
+          <p className="text-lg mb-8">...</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {quickLinks.map((link) => (
+              <Card key={link.href}>
+                <Link href={link.href}>
+                  <h2>{link.title}</h2>
+                </Link>
+              </Card>
+            ))}
+          </div>
+          <Button href="/" variant="primary" className="mt-8">Back to Home</Button>
+        </div>
+      </section>
+    </PageTemplate>
+  );
+}
+```
+
+## Quality Gate (Before Batch 8)
+
+- [ ] All 5 utility pages exist and render without errors
+- [ ] All copy matches the REWRITE sections — no hallucinated text
+- [ ] Component usage matches COMPONENT_CATALOG.md (correct props, variants)
+- [ ] Heading hierarchy is correct (h1 → h2 → h3, no skips)
+- [ ] Dark-background headings use `!text-white`
+- [ ] Outline buttons on dark bg use `!border-white !text-white`
+- [ ] Metadata exports present on all pages (except 404)
+- [ ] Contact form uses `"use client"`, proper labels, ariaRequired
+- [ ] Give page Tithe.ly embed has loading="lazy" and title attribute
+- [ ] 404 page uses `not-found.tsx` with `NotFound` export name
+- [ ] Accessibility: semantic HTML, aria labels where needed, keyboard-navigable
+- [ ] No `"use client"` unless truly needed (Contact form only)
 - [ ] **Commit:** `feat: add utility pages (Plan Visit, Give, Media, Contact, 404)`
+````
 
 ### Batch 8: Image Optimization & Assets
 - [ ] Task 8.1: Download and optimize scraped images

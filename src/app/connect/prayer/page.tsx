@@ -105,7 +105,7 @@ export default function PrayerPage() {
       <section id="prayer-form" className="bg-[var(--color-accent-sage)]/20 py-[var(--space-3xl)]">
         <div className="mx-auto max-w-2xl px-[var(--space-md)] md:px-[var(--space-xl)]">
           <h2 className="mb-[var(--space-xl)] text-center">Submit a Prayer Request</h2>
-          <form className="space-y-[var(--space-md)]" onSubmit={(e) => e.preventDefault()}>
+          <form className="space-y-[var(--space-md)]" action="/api/prayer" method="POST">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-[var(--color-text-primary)]">Your Name <span className="text-[var(--color-text-primary)]/50">(optional — anonymous requests accepted)</span></label>
               <input type="text" id="name" name="name" className="mt-1 block w-full rounded-[var(--radius-md)] border-2 border-[var(--color-accent-sage)] px-[var(--space-md)] py-[var(--space-sm)] text-sm text-[var(--color-text-primary)] transition-colors focus:border-[var(--color-primary)] focus:shadow-[0_0_0_3px_rgba(0,103,71,0.15)] focus:outline-none" />

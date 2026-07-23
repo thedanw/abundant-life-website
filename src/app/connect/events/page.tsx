@@ -151,11 +151,11 @@ export default function EventsPage() {
             <strong className="text-[var(--color-text-white)]">Registration:</strong> Free entry.
           </p>
           <div className="mt-[var(--space-lg)] flex flex-wrap gap-[var(--space-md)]">
-            <Button href="#register" variant="accent">
+            <Button href="/contact-us?subject=Apostolic%20Conference%20Registration" variant="accent">
               Register Now &rarr;
             </Button>
-            <Button href="/plan-your-visit#accommodation" variant="outline" className="border-[var(--color-text-white)] text-[var(--color-text-white)] hover:bg-white/20">
-              Accommodation Options &rarr;
+            <Button href="/plan-your-visit" variant="outline" className="border-[var(--color-text-white)] text-[var(--color-text-white)] hover:bg-white/20">
+              Plan Your Visit &rarr;
             </Button>
           </div>
         </div>
