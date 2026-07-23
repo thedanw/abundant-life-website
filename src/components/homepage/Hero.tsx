@@ -70,7 +70,7 @@ export default function Hero() {
             variant="outline"
             href="https://www.youtube.com/channel/UC57wuoZcqweQXnQ0izYeEPg"
             ariaLabel="Watch Church Online on YouTube (opens in new tab)"
-            className="border-white text-white hover:bg-white hover:text-[#352616]"
+            className="!border-[var(--color-primary)] !text-[var(--color-primary)] hover:!bg-[var(--color-primary)] hover:!text-white"
           >
             Church Online
           </Button>

@@ -31,14 +31,14 @@ export default function CallToAction() {
           <Button
             variant="outline"
             href="/give"
-            className="border-[var(--color-text-on-primary)] text-[var(--color-text-on-primary)] hover:bg-[var(--color-text-on-primary)] hover:text-[var(--color-primary)]"
+            className="!border-white !text-white hover:!bg-white hover:!text-[var(--color-primary)]"
           >
             Give Online
           </Button>
           <Button
             variant="outline"
             href="/contact-us"
-            className="border-[var(--color-text-on-primary)] text-[var(--color-text-on-primary)] hover:bg-[var(--color-text-on-primary)] hover:text-[var(--color-primary)]"
+            className="!border-white !text-white hover:!bg-white hover:!text-[var(--color-primary)]"
           >
             Contact Us
           </Button>

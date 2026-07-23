@@ -3,8 +3,6 @@ import Hero from "@/components/homepage/Hero";
 import Welcome from "@/components/homepage/Welcome";
 import ServiceTimes from "@/components/homepage/ServiceTimes";
 import WatchOnline from "@/components/homepage/WatchOnline";
-import Markets from "@/components/homepage/Markets";
-import Impact from "@/components/homepage/Impact";
 import CallToAction from "@/components/homepage/CallToAction";
 import FAQ from "@/components/homepage/FAQ";
 
@@ -21,8 +19,6 @@ export default function Home() {
       <Welcome />
       <ServiceTimes />
       <WatchOnline />
-      <Markets />
-      <Impact />
       <CallToAction />
       <FAQ />
     </>
