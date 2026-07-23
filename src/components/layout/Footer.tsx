@@ -52,7 +52,7 @@ export default function Footer() {
       {/* Main Footer Content */}
       <div className="mx-auto max-w-[var(--container-max)] px-[var(--space-md)] py-[var(--space-3xl)] md:px-[var(--space-xl)]">
         {/* Logo row — spans 2 columns width, left-aligned */}
-        <div className="mb-[var(--space-2xl)]">
+        <div className="mb-sm">
           <Link href="/" className="inline-block">
             <Image
               src="/images/brand/AbundantLife-Logo_landscape.svg"
@@ -66,8 +66,8 @@ export default function Footer() {
 
         {/* Content grid — 6 columns */}
         <div className="grid grid-cols-1 gap-[var(--space-2xl)] md:grid-cols-2 lg:grid-cols-6">
-          {/* Brand description — column 1 */}
-          <div>
+          {/* Brand description — spans 2 columns */}
+          <div className="lg:col-span-2">
             <p className="text-sm text-[var(--color-text-white)]/70">
               <span className="font-medium text-[var(--color-accent-gold)]">Sunday Services</span>
               <br />
