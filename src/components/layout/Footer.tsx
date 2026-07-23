@@ -59,7 +59,7 @@ export default function Footer() {
               alt="Abundant Life Centre Mareeba"
               width={160}
               height={36}
-              className="h-8 w-auto brightness-0 invert"
+              className="h-16 w-auto brightness-0 invert"
             />
           </Link>
         </div>
