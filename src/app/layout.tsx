@@ -37,9 +37,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Abundant Life Centre Mareeba" }],
   icons: {
     icon: [
-      { url: "/images/brand/AbundantLife-Emblem.svg", type: "image/svg+xml" },
+      { url: "/abundant-life-website/images/brand/AbundantLife-Emblem.svg", type: "image/svg+xml" },
     ],
-    apple: "/images/brand/AbundantLife-Emblem.svg",
+    apple: "/abundant-life-website/images/brand/AbundantLife-Emblem.svg",
   },
   openGraph: {
     type: "website",
@@ -114,9 +114,9 @@ export default function RootLayout({
           }}
         />
         {/* Favicon */}
-        <link rel="icon" type="image/svg+xml" href="/images/brand/AbundantLife-Emblem.svg" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/brand/AbundantLife-Emblem-32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/images/brand/AbundantLife-Emblem-180.png" />
+        <link rel="icon" type="image/svg+xml" href="/abundant-life-website/images/brand/AbundantLife-Emblem.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/abundant-life-website/images/brand/AbundantLife-Emblem-32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/abundant-life-website/images/brand/AbundantLife-Emblem-180.png" />
       </head>
       <body className="min-h-full flex flex-col">
         <SkipLink />
