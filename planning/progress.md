@@ -103,3 +103,70 @@
 - Batch 4 complete — all 14 planning pages rewritten with brand-aligned content
 - All encoding corruption resolved across all files
 - Ready for Batch 5: Homepage Landing Page Template
+
+---
+
+## Session: 2026-07-23 (Batch 5 — Homepage Landing Page Template)
+
+### Batch 5: Code Complete — Homepage Components
+
+| Time | Task | Status | Notes |
+|------|------|--------|-------|
+| 10:00 AM | Jest 30 configuration | ✅ | next/jest, jsdom env, @/* alias, `--testPathPatterns` (plural) |
+| 10:15 AM | Jest dependencies | ✅ | jest-environment-jsdom, @testing-library/react, @testing-library/jest-dom |
+| 10:30 AM | PageTemplate test (TDD Red) | ✅ | 6 tests: children, h1, ARIA, subtitle, className, max-width |
+| 10:45 AM | PageTemplate implementation | ✅ | Reusable page structure with heading, subtitle, children |
+| 11:00 AM | 8 homepage section components | ✅ | Hero, Welcome, ServiceTimes, WatchOnline, Markets, Impact, CallToAction, FAQ |
+| 11:15 AM | Assemble homepage | ✅ | `src/app/page.tsx` — all sections imported and rendered |
+| 11:30 AM | TypeScript check | ✅ | Clean compilation (`pnpm tsc --noEmit`) |
+| 11:30 AM | All tests pass | ✅ | 6/6 PageTemplate tests passing |
+
+### Batch 5: Visual Refinements (Iterative)
+
+| Time | Task | Status | Notes |
+|------|------|--------|-------|
+| 12:00 PM | Hero background image | ✅ | `abundant-life-church-worship-sundays.webp` with dark overlay |
+| 12:15 PM | Hero SEO structure | ✅ | H1: "Discover Abundant Life", John 10:10 quote, proper heading hierarchy |
+| 12:30 PM | Hero overlay color | ✅ | `color-mix(in oklab, #352616 50%, transparent)` |
+| 12:45 PM | Hero white bold text | ✅ | Force `!text-white` to override global h1 green color |
+| 1:00 PM | Hero CTAs | ✅ | "Plan Your Visit" (accent) + "Church Online" (green filled) |
+| 1:15 PM | Remove Markets + Impact | ✅ | Per user request — simplified homepage |
+| 1:30 PM | CTA button colors | ✅ | White outline on green bg, green filled on dark overlay |
+| 2:00 PM | Footer restructure | ✅ | Logo row above 6-column grid, brand spans 2 cols |
+| 2:15 PM | Footer logo size | ✅ | Increased to h-16 (64px) |
+| 2:30 PM | Bold DM Sans typography | ✅ | All h1-h6 bold DM Sans, header nav links bold |
+
+### Errors & Fixes
+- **Jest 30 `--testPathPattern` flag**: Must use `--testPathPatterns` (plural) in Jest 30 |
+| | **Missing jest-environment-jsdom**: Jest 28+ doesn't bundle it — `pnpm add -D jest-environment-jsdom` |
+| | **`setupFiles` before globals**: `expect is not defined` — removed setupFiles, import `@testing-library/jest-dom/jest-globals` directly in test files |
+| | **`!text-white` override needed**: Global CSS `h1 { color: var(--color-primary) }` overrides Tailwind — use `!` prefix for `!important` |
+| | **Footer `lg:col-span-2` missing**: Brand description div wasn't spanning 2 columns — added the class |
+
+### Test Results
+- `pnpm test` — 6/6 PASS (PageTemplate tests)
+- `pnpm tsc --noEmit` — PASS (no errors)
+
+### Git Commits (Batch 5)
+1. `chore: initial project setup with Next.js, design tokens, and layout components`
+2. `feat: add hero background image with SEO-optimized heading structure`
+3. `feat: update hero overlay, white bold text, and Church Online CTA`
+4. `feat: remove Markets and Impact sections, fix CTA button colors`
+5. `fix: CTA secondary buttons use filled primary green with white text`
+6. `fix: CTA section white heading with outline white buttons, hero green filled CTA`
+7. `feat: restructure footer to 6-column grid with h5 headings`
+8. `fix: footer logo in separate row above 6-column grid`
+9. `fix: increase footer logo size to h-16`
+10. `fix: footer brand description now spans 2 columns on desktop`
+11. `feat: all headings and header nav links bold DM Sans`
+
+### Current Homepage Sections
+1. **Hero** — Background image, "Discover Abundant Life" h1, John 10:10 quote, service times card, Plan Your Visit + Church Online CTAs
+2. **Welcome** — Church identity, mission, link to About Us
+3. **ServiceTimes** — 9:30am-11:30am, 133 Walsh St, Plan Your Visit CTA
+4. **WatchOnline** — YouTube + sermon archive links
+5. **CallToAction** — Plan Your Visit (accent), Give Online + Contact Us (green filled)
+6. **FAQ** — 5 expandable questions (accordion)
+
+### Remaining Batch 5 Work
+- Quality gates 5.13-5.16 (visual review, user testing, brand review, finalization) — pending user approval

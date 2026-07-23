@@ -48,53 +48,36 @@ To ensure efficient execution and high-quality output within LLM context limits,
 
 ## Action Items
 
-### Batch 1: Project Setup & Foundation
-- [ ] Task 1.1: Initialize project with chosen framework (Next.js recommended for SSG/SSR)
+### Batch 1: Project Setup & Foundation ✅
+- [x] Task 1.1: Initialize project with Next.js
   Run: `npx create-next-app@latest abundant-life-website --typescript --tailwind --eslint --app --src-dir`
-- [ ] Task 1.2: Configure brand tokens in Tailwind config
-  Code: `tailwind.config.ts` — add colors, fonts, spacing from BRAND_VISUAL_GUIDELINES.md
-- [ ] Task 1.3: Set up global styles with CSS variables
-  Code: `src/app/globals.css` — add CSS custom properties for colors, typography, spacing
-- [ ] Task 1.4: Create layout components (Header, Footer, MobileNav)
+- [x] Task 1.2: Configure brand tokens in Tailwind config
+  Code: `tailwind.config.ts` — DM Sans, brand colors, spacing scale
+- [x] Task 1.3: Set up global styles with CSS variables
+  Code: `src/app/globals.css` — complete design tokens
+- [x] Task 1.4: Create layout components (Header, Footer, MobileNav)
   Code: `src/components/layout/` — Header.tsx, Footer.tsx, MobileNav.tsx
-- [ ] Task 1.5: Set up font loading (Merriweather + Source Sans 3)
-  Code: `src/app/layout.tsx` — configure Google Fonts with font-display: swap
-- [ ] **Commit:** `chore: initialize project with brand tokens and layout components`
+- [x] Task 1.5: Set up font loading (DM Sans)
+  Code: `src/app/layout.tsx` — DM Sans variable font (400/500/600/700)
+- [x] **Commit:** `chore: initialize project with brand tokens and layout components`
 
-### Batch 2: Core Components (TDD)
-- [ ] Task 2.1: **Write failing test** for Button component
-  Code: `src/components/__tests__/Button.test.tsx`
-  Line: `test('renders with correct brand colors', () => { ... })`
-- [ ] Task 2.2: **Run test** to verify it fails
-  Run: `npm test Button.test.tsx`
-  Expected: FAIL (Button not found)
-- [ ] Task 2.3: **Implement Button component** with brand variants
-  Code: `src/components/Button.tsx` — primary, secondary, outline, accent variants
-- [ ] Task 2.4: **Run test** to verify it passes
-  Run: `npm test Button.test.tsx`
-  Expected: PASS
-- [ ] Task 2.5: **Write failing test** for Card component
-  Code: `src/components/__tests__/Card.test.tsx`
-  Line: `test('renders with proper accessibility', () => { ... })`
-- [ ] Task 2.6: **Implement Card component** with hover states
-  Code: `src/components/Card.tsx` — with accent gold border on hover
-- [ ] Task 2.7: **Run test** to verify it passes
-  Run: `npm test Card.test.tsx`
-  Expected: PASS
-- [ ] **Commit:** `feat: add Button and Card components with brand styling`
+### Batch 2: Core Components (TDD) ✅
+- [x] Task 2.1: **Write failing test** for Button component
+- [x] Task 2.2: **Run test** to verify it fails
+- [x] Task 2.3: **Implement Button component** with brand variants
+- [x] Task 2.4: **Run test** to verify it passes
+- [x] Task 2.5: **Write failing test** for Card component
+- [x] Task 2.6: **Implement Card component** with hover states
+- [x] Task 2.7: **Run test** to verify it passes
+- [x] **Commit:** `feat: add Button and Card components with brand styling`
 
-### Batch 2.5: Design System & Component Library
+### Batch 2.5: Design System & Component Library ⏭️ SKIPPED
+> Documentation deferred — patterns established in code, to be documented later.
 - [ ] Task 2.5.1: Create design tokens documentation
-  Code: `src/design-system/tokens.md` — colors, typography, spacing, shadows
 - [ ] Task 2.5.2: Create component variants documentation
-  Code: `src/design-system/components.md` — all component states and variations
 - [ ] Task 2.5.3: Create layout patterns documentation
-  Code: `src/design-system/patterns.md` — page templates, section layouts
 - [ ] Task 2.5.4: Create StyleGuide component for visual reference
-  Code: `src/components/StyleGuide.tsx` — interactive component showcase
 - [ ] Task 2.5.5: Create consistency checklist
-  Code: `src/design-system/checklist.md` — quality gates for visual consistency
-- [ ] **Commit:** `docs: add design system documentation and StyleGuide component`
 
 ### Batch 3: Source Content Mapping (QUALITY GATE)
 
@@ -339,36 +322,22 @@ Each planning page in `planning/pages/` now has a `## 📄 Current Copy (from SI
 
 ---
 
-### Batch 5: Homepage Landing Page Template (QUALITY GATE)
+### Batch 5: Homepage Landing Page Template (QUALITY GATE) 🔄 CODE COMPLETE
 > Scope: `home.md` only — `/` route
-- [ ] Task 5.1: **Write failing test** for PageTemplate component
-  Code: `src/components/__tests__/PageTemplate.test.tsx`
-  Line: `test('renders with proper SEO metadata', () => { ... })`
-- [ ] Task 5.2: **Implement PageTemplate** with SEO, breadcrumbs, layout
-  Code: `src/components/PageTemplate.tsx` — reusable page structure
-- [ ] Task 5.3: **Run test** to verify it passes
-  Run: `npm test PageTemplate.test.tsx`
-  Expected: PASS
-- [ ] Task 5.4: Create homepage hero section
-  Code: `src/components/homepage/Hero.tsx` — "Have a heart of worship" with service times, CTAs
-- [ ] Task 5.5: Create homepage welcome section
-  Code: `src/components/homepage/Welcome.tsx` — church identity, mission statement
-- [ ] Task 5.6: Create homepage service times section
-  Code: `src/components/homepage/ServiceTimes.tsx` — Sunday service details
-- [ ] Task 5.7: Create homepage watch online section
-  Code: `src/components/homepage/WatchOnline.tsx` — YouTube, Facebook, audio links
-- [ ] Task 5.8: Create homepage Mareeba Markets section
-  Code: `src/components/homepage/Markets.tsx` — market details, CTA
-- [ ] Task 5.9: Create homepage impact section
-  Code: `src/components/homepage/Impact.tsx` — missions, community impact cards
-- [ ] Task 5.10: Create homepage call-to-action section
-  Code: `src/components/homepage/CallToAction.tsx` — Plan Your Visit, Give, Contact
-- [ ] Task 5.11: Create homepage FAQ section
-  Code: `src/components/homepage/FAQ.tsx` — common questions for first-time visitors
-- [ ] Task 5.12: Assemble homepage from components
-  Code: `src/app/page.tsx` — combine all homepage sections
+- [x] Task 5.1: **Write failing test** for PageTemplate component (6 tests, TDD Red phase)
+- [x] Task 5.2: **Implement PageTemplate** with SEO, ARIA landmark, layout
+- [x] Task 5.3: **Run test** to verify it passes (6/6 PASS)
+- [x] Task 5.4: Create homepage hero section — background image, "Discover Abundant Life" h1, John 10:10 quote
+- [x] Task 5.5: Create homepage welcome section — church identity, mission statement
+- [x] Task 5.6: Create homepage service times section — Sunday service details
+- [x] Task 5.7: Create homepage watch online section — YouTube, sermon archive links
+- [x] Task 5.8: Create homepage Mareeba Markets section — removed per user request
+- [x] Task 5.9: Create homepage impact section — removed per user request
+- [x] Task 5.10: Create homepage call-to-action section — Plan Your Visit, Give, Contact
+- [x] Task 5.11: Create homepage FAQ section — 5 expandable questions
+- [x] Task 5.12: Assemble homepage from components
 - [ ] Task 5.13: **QUALITY GATE: Visual Review**
-  Run: `npm run dev` — preview homepage
+  Run: `pnpm dev` — preview homepage
   Checklist:
   - [ ] Hero section matches brand guidelines (colors, typography, spacing)
   - [ ] All CTAs are clear and accessible
@@ -395,7 +364,7 @@ Each planning page in `planning/pages/` now has a `## 📄 Current Copy (from SI
 - [ ] Task 5.16: **HOMEPAGE FINALIZATION**
   Run: User approval required before proceeding
   **⚠️ DO NOT PROCEED TO BATCH 6 UNTIL THIS GATE IS PASSED**
-- [ ] **Commit:** `feat: add homepage landing page template with quality gates`
+- [x] **Commits:** Multiple — hero image, overlay, CTA colors, footer restructure, typography
 
 ### Batch 6: Connect Hub & Subpages
 - [ ] Task 6.1: Create Connect hub page

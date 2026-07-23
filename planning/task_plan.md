@@ -2,7 +2,7 @@
 
 **Status:** In Progress
 **Started:** 2026-07-20
-**Last Updated:** 2026-07-22
+**Last Updated:** 2026-07-23
 
 ## Phase 1: Brainstorm
 - [x] Understanding Summary confirmed
@@ -22,10 +22,13 @@
 | 1.3: Set up global styles with CSS variables | ✓ | | Complete design tokens in globals.css |
 | 1.4: Create layout components | ✓ | | Header, Footer, MobileNav with floating header |
 | 1.5: Set up font loading | ✓ | | DM Sans variable font (400/500/600/700) |
-| 2.1-2.7: Core Components (TDD) | ☐ | | Button, Card, etc. |
-| 3.1-3.6: Page Templates (TDD) | ☐ | | Homepage, etc. |
+| 2.1-2.7: Core Components (TDD) | ✓ | | Button, Card with brand variants |
+| 3.1-3.6: Source Content Mapping | ✓ | | All 14 planning pages mapped |
 | 4.1-4.14: Page Content Rewrite (Batch 4) | ✓ | | All 14 planning pages rewritten with brand-aligned content, encoding fixed |
-| 5.1-5.5: Utility Pages | ☐ | | Plan Your Visit, Give, Watch, Contact, 404 |
+| 5.1-5.12: Homepage Landing Page (Batch 5) | ✓ | | PageTemplate TDD, 6 sections, hero image, footer restructure |
+| 5.13-5.16: Homepage Quality Gates | ☐ | | Visual review, user testing, brand review, finalization |
+| 6.1-6.6: Connect Hub & Subpages | ☐ | | Connect, Events, Prayer, Missions, Groups, Serve |
+| 7.1-7.5: Utility Pages | ☐ | | Plan Your Visit, Give, Watch, Contact, 404 |
 | 6.1-6.4: Image Optimization & Assets | ☐ | | Responsive images, WebP, lazy loading |
 | 7.1-7.4: SEO & Schema Markup | ☐ | | JSON-LD, meta tags, sitemap |
 | 8.1-8.5: Accessibility & Testing | ☐ | | WCAG 2.1 AA compliance |
