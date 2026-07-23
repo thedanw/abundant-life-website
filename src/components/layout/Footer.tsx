@@ -55,7 +55,7 @@ export default function Footer() {
         <div className="mb-sm">
           <Link href="/" className="inline-block">
             <Image
-              src="/images/brand/AbundantLife-Logo_landscape.svg"
+              src="/abundant-life-website/images/brand/AbundantLife-Logo_landscape.svg"
               alt="Abundant Life Centre Mareeba"
               width={160}
               height={36}
