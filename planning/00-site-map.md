@@ -490,7 +490,7 @@ Each page below includes: purpose, keywords, content, **primary CTA**, **visual 
 
 ## ???? BRAND & VISUAL GUIDELINES
 
-> **Single Source of Truth:** See [BRAND_VISUAL_GUIDELINES.md](../../BRAND_VISUAL_GUIDELINES.md) for the complete visual identity system.
+> **Single Source of Truth:** See [BRAND_VISUAL_GUIDELINES.md](../.agents/BRAND_VISUAL_GUIDELINES.md) for the complete visual identity system.
 
 ### Core Principles
 - **Color Psychology:** Use the primary and secondary palettes defined in the Brand Guidelines to build trust and recognition.

@@ -82,3 +82,15 @@ planning/
 - **Atomic commits** — Phase 3 executes in small batches with git commits per batch
 - **Context persistence** — `findings.md` and `progress.md` carry context across phases
 - **Quality gates** — Typecheck, lint, and test must pass before each commit in Phase 3
+
+---
+
+## Reference Documents
+
+| Document | Purpose |
+|----------|---------|
+| [`COMPONENT_CATALOG.md`](./COMPONENT_CATALOG.md) | All UI components, props, patterns, and design token reference |
+| [`BRAND_VISUAL_GUIDELINES.md`](./BRAND_VISUAL_GUIDELINES.md) | Colors, typography, spacing, imagery, and logo rules |
+| [`BRAND_VOICE.md`](./BRAND_VOICE.md) | Tone, messaging hierarchy, and writing style for content |
+
+**When building new components or pages, consult `COMPONENT_CATALOG.md` first.** For content and copy decisions, refer to `BRAND_VOICE.md`. For visual styling details beyond the catalog, see `BRAND_VISUAL_GUIDELINES.md`.
