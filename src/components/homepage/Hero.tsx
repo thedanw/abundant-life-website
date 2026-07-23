@@ -67,10 +67,9 @@ export default function Hero() {
             Plan Your Visit
           </Button>
           <Button
-            variant="outline"
+            variant="primary"
             href="https://www.youtube.com/channel/UC57wuoZcqweQXnQ0izYeEPg"
             ariaLabel="Watch Church Online on YouTube (opens in new tab)"
-            className="!border-[var(--color-primary)] !text-[var(--color-primary)] hover:!bg-[var(--color-primary)] hover:!text-white"
           >
             Church Online
           </Button>

@@ -14,7 +14,7 @@ export default function CallToAction() {
       <div className="mx-auto max-w-[var(--container-max)] text-center">
         <h2
           id="cta-heading"
-          className="text-[var(--text-h2)] font-bold mb-[var(--space-lg)]"
+          className="!text-white text-[var(--text-h2)] font-bold mb-[var(--space-lg)]"
         >
           Take Your Next Step
         </h2>
@@ -29,14 +29,16 @@ export default function CallToAction() {
             Plan Your Visit
           </Button>
           <Button
-            variant="primary"
+            variant="outline"
             href="/give"
+            className="!border-white !text-white hover:!bg-white hover:!text-[var(--color-primary)]"
           >
             Give Online
           </Button>
           <Button
-            variant="primary"
+            variant="outline"
             href="/contact-us"
+            className="!border-white !text-white hover:!bg-white hover:!text-[var(--color-primary)]"
           >
             Contact Us
           </Button>
