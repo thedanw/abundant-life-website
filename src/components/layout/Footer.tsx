@@ -51,36 +51,58 @@ export default function Footer() {
     <footer className="bg-[var(--color-text-black)] text-[var(--color-text-white)]">
       {/* Main Footer Content */}
       <div className="mx-auto max-w-[var(--container-max)] px-[var(--space-md)] py-[var(--space-3xl)] md:px-[var(--space-xl)]">
-        <div className="grid grid-cols-1 gap-[var(--space-2xl)] md:grid-cols-2 lg:grid-cols-5">
-          {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="inline-block">
-              <Image
-                src="/images/brand/AbundantLife-Logo_landscape.svg"
-                alt="Abundant Life Centre Mareeba"
-                width={160}
-                height={36}
-                className="h-8 w-auto brightness-0 invert"
-              />
-            </Link>
-            <p className="mt-[var(--space-md)] text-sm text-[var(--color-text-white)]/70">
-              <span className="font-medium text-[var(--color-accent-gold)]">Sunday Services</span>
-              <br />
-              9:30 AM
-            </p>
-            <p className="mt-[var(--space-md)] text-sm leading-relaxed text-[var(--color-text-white)]/70">
-              A spirit-filled, evangelical church in the heart of Mareeba, Queensland.
-              Join us for worship, community, and encounters with God.
-            </p>
+        <div className="grid grid-cols-1 gap-[var(--space-2xl)] md:grid-cols-2 lg:grid-cols-6">
+          {/* Brand + First Nav — grouped so they stack together on mobile */}
+          <div className="flex flex-col gap-[var(--space-2xl)] lg:col-span-2 lg:flex-row lg:gap-[var(--space-2xl)]">
+            {/* Brand Column — spans 2 on desktop */}
+            <div className="flex-1">
+              <Link href="/" className="inline-block">
+                <Image
+                  src="/images/brand/AbundantLife-Logo_landscape.svg"
+                  alt="Abundant Life Centre Mareeba"
+                  width={160}
+                  height={36}
+                  className="h-8 w-auto brightness-0 invert"
+                />
+              </Link>
+              <p className="mt-[var(--space-md)] text-sm text-[var(--color-text-white)]/70">
+                <span className="font-medium text-[var(--color-accent-gold)]">Sunday Services</span>
+                <br />
+                9:30 AM
+              </p>
+              <p className="mt-[var(--space-md)] text-sm leading-relaxed text-[var(--color-text-white)]/70">
+                A spirit-filled, evangelical church in the heart of Mareeba, Queensland.
+                Join us for worship, community, and encounters with God.
+              </p>
+            </div>
+
+            {/* First Nav Column */}
+            <div className="flex-1">
+              <h5 className="mb-[var(--space-md)] text-sm font-semibold uppercase tracking-[var(--tracking-wide)] text-[var(--color-accent-gold)]">
+                {footerNav[0].title}
+              </h5>
+              <ul className="flex flex-col">
+                {footerNav[0].links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-[var(--color-text-white)]/70 transition-colors duration-200 hover:text-[var(--color-text-white)]"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* Navigation Columns */}
-          {footerNav.map((section) => (
+          {/* Remaining Nav Columns — 3-6 */}
+          {footerNav.slice(1).map((section) => (
             <div key={section.title}>
-              <h4 className="mb-[var(--space-md)] text-sm font-semibold uppercase tracking-[var(--tracking-wide)] text-[var(--color-accent-gold)]">
+              <h5 className="mb-[var(--space-md)] text-sm font-semibold uppercase tracking-[var(--tracking-wide)] text-[var(--color-accent-gold)]">
                 {section.title}
-              </h4>
-              <ul className="flex flex-col gap-[var(--space-sm)]">
+              </h5>
+              <ul className="flex flex-col">
                 {section.links.map((link) => (
                   <li key={link.href}>
                     <Link
