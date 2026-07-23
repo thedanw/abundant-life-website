@@ -51,7 +51,7 @@ export default function Header() {
           aria-label="Abundant Life Centre Mareeba — Home"
         >
           <Image
-            src="/images/brand/AbundantLife-Logo_landscape.svg"
+            src="/abundant-life-website/images/brand/AbundantLife-Logo_landscape.svg"
             alt="Abundant Life Centre Mareeba"
             width={180}
             height={40}
