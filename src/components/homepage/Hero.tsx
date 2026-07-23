@@ -16,7 +16,7 @@ export default function Hero() {
     >
       {/* Background image */}
       <Image
-        src="/images/hero/abundant-life-church-worship-sundays.webp"
+        src="/abundant-life-website/images/hero/abundant-life-church-worship-sundays.webp"
         alt="Worship service at Abundant Life Centre Mareeba"
         fill
         priority
