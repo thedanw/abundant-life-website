@@ -29,16 +29,14 @@ export default function CallToAction() {
             Plan Your Visit
           </Button>
           <Button
-            variant="outline"
+            variant="primary"
             href="/give"
-            className="!border-white !text-white hover:!bg-white hover:!text-[var(--color-primary)]"
           >
             Give Online
           </Button>
           <Button
-            variant="outline"
+            variant="primary"
             href="/contact-us"
-            className="!border-white !text-white hover:!bg-white hover:!text-[var(--color-primary)]"
           >
             Contact Us
           </Button>
