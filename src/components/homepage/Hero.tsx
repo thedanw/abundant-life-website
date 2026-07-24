@@ -20,7 +20,7 @@ export default function Hero() {
         alt="Worship service at Abundant Life Centre Mareeba"
         fill
         priority
-        className="object-cover object-center -z-10"
+        className="object-cover object-[center_35%] -z-10"
         sizes="100vw"
       />
 
