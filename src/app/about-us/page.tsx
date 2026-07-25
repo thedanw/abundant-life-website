@@ -23,7 +23,7 @@ export default function AboutUsPage() {
   return (
     <main id="main-content" className="flex-1">
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-[var(--color-primary)] py-[var(--space-4xl)]">
+      <section className="relative isolate overflow-hidden bg-[var(--color-primary)] py-[var(--space-4xl)] lg:py-[var(--space-5xl)]">
         <Image
           src="/abundant-life-website/images/hero/about-us-hero.webp"
           alt="Abundant Life Centre Mareeba church congregation"

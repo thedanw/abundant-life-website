@@ -86,6 +86,8 @@
   --space-2xl: 3rem;     /* 48px */
   --space-3xl: 4rem;     /* 64px */
   --space-4xl: 6rem;     /* 96px */
+  --space-5xl: 12rem;    /* 192px (2x 4xl for large screens) */
+  --space-5xl: 12rem;    /* 192px (2x 4xl for large screens) */
 
   /* ---- Layout ---- */
   --container-max: 75rem; /* 1200px */

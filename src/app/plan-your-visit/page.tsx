@@ -56,7 +56,7 @@ export default function PlanYourVisitPage() {
   return (
     <main id="main-content" className="flex-1">
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-[var(--color-primary)] py-[var(--space-4xl)]">
+      <section className="relative isolate overflow-hidden bg-[var(--color-primary)] py-[var(--space-4xl)] lg:py-[var(--space-5xl)]">
         {/* Background image */}
         <Image
           src="/abundant-life-website/images/hero/plan-your-visit-hero.webp"

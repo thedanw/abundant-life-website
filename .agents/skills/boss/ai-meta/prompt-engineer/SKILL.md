@@ -153,11 +153,6 @@ Validate that services are loosely coupled, independently deployable, and aligne
 ```
 ````
 
-**4.5. Language Adaptation**
-- If original prompt is in Portuguese, generate prompt in Portuguese
-- If original prompt is in English, generate prompt in English
-- If mixed, default to English (more universal for AI models)
-
 **4.6. Quality Checks**
 Before finalizing, verify:
 - [ ] Prompt is self-contained (no external context needed)

@@ -30,7 +30,7 @@ export default function Hero() {
         style={{ backgroundColor: "color-mix(in oklab, #352616 50%, transparent)" }}
       />
 
-      <div className="mx-auto max-w-[var(--container-max)] px-[var(--space-lg)] py-[var(--space-4xl)] text-center">
+      <div className="mx-auto max-w-[var(--container-max)] px-[var(--space-lg)] py-[var(--space-4xl)] lg:py-[var(--space-5xl)] text-center">
         {/* H1 — primary SEO heading */}
         <h1
           id="hero-heading"
