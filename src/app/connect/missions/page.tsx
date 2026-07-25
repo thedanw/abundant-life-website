@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Button from "@/components/Button";
 import Card from "@/components/Card";
 
@@ -82,7 +83,21 @@ export default function MissionsPage() {
   return (
     <main id="main-content" className="flex-1">
       {/* Hero */}
-      <section className="bg-[var(--color-primary)] py-[var(--space-4xl)]">
+      <section className="relative isolate overflow-hidden bg-[var(--color-primary)] py-[var(--space-4xl)]">
+        {/* Background image */}
+        <Image
+          src="/abundant-life-website/images/hero/missions-hero.webp"
+          alt="Bible verse background — I have come that they may have life abundantly John 10:10"
+          fill
+          priority
+          className="object-cover -z-10"
+          sizes="100vw"
+        />
+        {/* Dark overlay */}
+        <div
+          className="absolute inset-0 -z-[5]"
+          style={{ backgroundColor: "color-mix(in oklab, #006747 65%, transparent)" }}
+        />
         <div className="prose mx-auto max-w-[var(--container-max)] px-[var(--space-md)] text-center md:px-[var(--space-xl)]">
           <h1 className="text-[var(--color-text-white)]">
             Missions — Reaching the World from Mareeba
@@ -154,6 +169,28 @@ export default function MissionsPage() {
         <div className="grid grid-cols-1 gap-[var(--space-lg)] md:grid-cols-2">
           {judeaPartners.map((p) => (
             <Card key={p.name} hoverEffect={false}>
+              {p.name === "IMLA" && (
+                <div className="relative h-16 w-48 mb-[var(--space-sm)] p-[5px]">
+                  <Image
+                    src="/abundant-life-website/images/missions/imla.webp"
+                    alt="IMLA — Indigenous Ministry Links Australia logo"
+                    fill
+                    className="object-contain object-left"
+                    sizes="192px"
+                  />
+                </div>
+              )}
+              {p.name === "SU Queensland" && (
+                <div className="relative h-16 w-48 mb-[var(--space-sm)] p-[5px]">
+                  <Image
+                    src="/abundant-life-website/images/missions/su-queensland.webp"
+                    alt="SU Queensland — Scripture Union school chaplaincy logo"
+                    fill
+                    className="object-contain object-left"
+                    sizes="192px"
+                  />
+                </div>
+              )}
               <h3 className="font-semibold text-[var(--color-primary)]">{p.name}</h3>
               <p className="mt-[var(--space-xs)] text-sm font-medium text-[var(--color-secondary)]">{p.focus}</p>
               <p className="mt-[var(--space-sm)] text-sm text-[var(--color-text-primary)]">{p.impact}</p>
@@ -170,15 +207,59 @@ export default function MissionsPage() {
       {/* Ends of the Earth */}
       <section className="bg-[var(--color-primary)] py-[var(--space-3xl)]">
         <div className="mx-auto max-w-[var(--container-max)] px-[var(--space-md)] md:px-[var(--space-xl)]">
-          <h2 className="mb-[var(--space-md)] text-[var(--color-accent-gold)]">Ends of the Earth — Global</h2>
+          <h2 className="mb-[var(--space-md)] text-[var(--color-text-white)]">Ends of the Earth — Global</h2>
           <div className="grid grid-cols-1 gap-[var(--space-lg)] md:grid-cols-2">
             {endsPartners.map((p) => (
               <div key={p.name} className="rounded-[var(--radius-lg)] bg-white/10 p-[var(--space-xl)]">
-                <h3 className="font-semibold text-[var(--color-accent-gold)]">{p.name}</h3>
+                {p.name === "Living Waters Village" && (
+                  <div className="relative h-16 w-48 mb-[var(--space-sm)] p-[5px]">
+                    <Image
+                      src="/abundant-life-website/images/missions/living-waters-village.webp"
+                      alt="Living Waters Village logo — orphan care ministry in Borneo"
+                      fill
+                      className="object-contain object-left"
+                      sizes="192px"
+                    />
+                  </div>
+                )}
+                {p.name === "Gideons International" && (
+                  <div className="relative h-16 w-48 mb-[var(--space-sm)] p-[5px]">
+                    <Image
+                      src="/abundant-life-website/images/missions/gideons-international.webp"
+                      alt="Gideons International logo — Bible distribution ministry"
+                      fill
+                      className="object-contain object-left"
+                      sizes="192px"
+                    />
+                  </div>
+                )}
+                {p.name === "Alphacrucis College" && (
+                  <div className="relative h-16 w-48 mb-[var(--space-sm)] p-[5px]">
+                    <Image
+                      src="/abundant-life-website/images/missions/alphacrucis-college.webp"
+                      alt="Alphacrucis College logo — Christian tertiary education"
+                      fill
+                      className="object-contain object-left"
+                      sizes="192px"
+                    />
+                  </div>
+                )}
+                {p.name === "ApostleNet International" && (
+                  <div className="relative h-16 w-48 mb-[var(--space-sm)] p-[5px]">
+                    <Image
+                      src="/abundant-life-website/images/missions/apostlenet.webp"
+                      alt="ApostleNet International — global apostolic network logo"
+                      fill
+                      className="object-contain object-left"
+                      sizes="192px"
+                    />
+                  </div>
+                )}
+                <h3 className="font-semibold text-[var(--color-text-white)]">{p.name}</h3>
                 <p className="mt-[var(--space-xs)] text-sm font-medium text-[var(--color-text-white)]/80">{p.focus}</p>
                 <p className="mt-[var(--space-sm)] text-sm text-[var(--color-text-white)]/60">{p.impact}</p>
                 {p.url && (
-                  <a href={p.url} target="_blank" rel="noopener noreferrer" className="mt-[var(--space-sm)] inline-block text-sm font-medium text-[var(--color-accent-gold)] underline transition-colors hover:text-[var(--color-text-white)]">
+                  <a href={p.url} target="_blank" rel="noopener noreferrer" className="mt-[var(--space-sm)] inline-block text-sm font-medium text-[var(--color-text-white)] underline transition-colors hover:text-[var(--color-accent-gold)]">
                     Visit {p.name} website &rarr;
                   </a>
                 )}

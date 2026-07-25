@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Button from "@/components/Button";
 import Card from "@/components/Card";
 
@@ -46,7 +47,21 @@ export default function NotFound() {
   return (
     <main id="main-content" className="flex-1">
       {/* Hero */}
-      <section className="bg-[var(--color-primary)] py-[var(--space-4xl)]">
+      <section className="relative isolate overflow-hidden bg-[var(--color-primary)] py-[var(--space-4xl)]">
+        {/* Background image */}
+        <Image
+          src="/abundant-life-website/images/hero/404-hero.webp"
+          alt="Bible verse background — I have come that they may have life abundantly"
+          fill
+          priority
+          className="object-cover -z-10"
+          sizes="100vw"
+        />
+        {/* Dark overlay */}
+        <div
+          className="absolute inset-0 -z-[5]"
+          style={{ backgroundColor: "color-mix(in oklab, #006747 65%, transparent)" }}
+        />
         <div className="prose mx-auto max-w-[var(--container-max)] px-[var(--space-md)] text-center md:px-[var(--space-xl)]">
           <h1 className="text-[var(--color-text-white)]">
             Page Not Found — We&apos;ll Help You Find Your Way

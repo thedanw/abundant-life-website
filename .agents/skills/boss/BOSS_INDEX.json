@@ -1074,6 +1074,55 @@
                        "risk":  "safe",
                        "path":  "writing/unslop",
                        "source":  "installed"
+                   },
+                   {
+                       "id":  "stock-photo-finder",
+                       "name":  "stock-photo-finder",
+                       "description":  "Find usable free stock photos for design work, with a strong bias toward Unsplash and other trusted free stock sources. Filter by subject, orientation, mood, and licensing needs.",
+                       "category":  "design",
+                       "tags":  [
+                                    "stock-photos",
+                                    "unsplash",
+                                    "images",
+                                    "design-assets",
+                                    "visual",
+                                    "photography",
+                                    "licensing"
+                                ],
+                       "triggers":  [
+                                        "find",
+                                        "search",
+                                        "photo",
+                                        "image",
+                                        "unsplash"
+                                    ],
+                       "risk":  "safe",
+                       "path":  "design/stock-photo-finder",
+                       "source":  "installed"
+                   },
+                   {
+                       "id":  "unsplash-integration",
+                       "name":  "unsplash-integration",
+                       "description":  "Fetch and evaluate Unsplash images for design work using direct Unsplash search URLs, source filtering, and practical licensing guidance.",
+                       "category":  "design",
+                       "tags":  [
+                                    "unsplash",
+                                    "stock-photos",
+                                    "images",
+                                    "design",
+                                    "photography",
+                                    "licensing"
+                                ],
+                       "triggers":  [
+                                        "find",
+                                        "search",
+                                        "image",
+                                        "photo",
+                                        "unsplash"
+                                    ],
+                       "risk":  "safe",
+                       "path":  "design/unsplash-integration",
+                       "source":  "installed"
                    }
                ]
 }

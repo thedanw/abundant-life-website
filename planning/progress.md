@@ -170,3 +170,46 @@
 
 ### Remaining Batch 5 Work
 - Quality gates 5.13-5.16 (visual review, user testing, brand review, finalization) — pending user approval
+
+---
+
+## Session: 2026-07-25 (Batch 8 — Hero Image Replacement)
+
+### Batch 8: High-Res Stock Hero Images for All Pages (except Home)
+
+**Strategy**: Used the new "Stock Photo Strategy Pattern" (Prompt 8 in llm-prompt-optimizer skill) to generate non-cliché, brand-aligned hero images for each page. Leveraged BRAND_VOICE.md, BRAND_VISUAL_GUIDELINES.md, page content, and SEO keywords to create targeted search queries.
+
+**Image Sources**: Pexels (free, commercial use, no attribution required)
+
+| Page | Hero Image | Visual Concept | Search Query Used |
+|------|------------|----------------|-------------------|
+| **Home** | `abundant-life-church-worship-sundays.webp` | **KEPT** — Authentic worship photo | — |
+| **About Us** | `about-us-hero.webp` | Pastor couple leading worship, diverse congregation | "pastor couple leading worship diverse congregation Australia" |
+| **What We Believe** | `what-we-believe-hero.webp` | Open hands giving/receiving, warm light | "open hands giving receiving warm light worship" |
+| **Plan Your Visit** | `plan-your-visit-hero.webp` | Peaceful forest trail inviting journey | "peaceful forest trail inviting journey nature" |
+| **Give** | `give-hero.webp` | Open hands giving/receiving, warm light | "open hands giving receiving warm light worship" |
+| **Watch** | `watch-hero.webp` | Smartphone on tripod for livestreaming | "smartphone on tripod for livestreaming video" |
+| **Contact Us** | `contact-us-hero.webp` | Outdoor team meeting in garden setting | "outdoor team meeting garden setting welcoming" |
+| **Connect Hub** | `connect-hero.webp` | Group holding hands in prayer, unity | "group holding hands prayer unity diverse" |
+| **Events** | `events-hero.webp` | Volunteers organizing charity event outdoors | "volunteers organizing charity event outdoors community" |
+| **Prayer** | `prayer-hero.webp` | Group holding hands in prayer, unity | "group holding hands prayer unity diverse" |
+| **Missions** | `missions-hero.webp` | Volunteers organizing charity event outdoors | "volunteers organizing charity event outdoors community" |
+| **Groups** | `groups-hero.webp` | Four people sitting in circle holding hands | "four people sitting circle holding hands unity support" |
+| **Serve** | `serve-hero.webp` | Volunteers organizing charity event outdoors | "volunteers organizing charity event outdoors community" |
+| **404** | `404-hero.webp` | Peaceful forest trail — finding your way | "peaceful forest trail inviting journey nature" |
+
+**Technical Specs**: All images 1920×1080 WebP, <200KB, saved to `public/images/hero/`
+
+**Brand Alignment**: Images use warm golds (`#c4916c`, `#fed26f`), deep greens (`#006747`), sage tones (`#9cba9e`) matching brand palette. Avoided clichés: empty pews, isolated raised hands, sunset crosses, forced smiles.
+
+### Git Commits (Batch 8)
+1. `feat: add hero image strategy document and download high-res stock photos for all pages`
+2. `feat: replace hero images on all pages except home with brand-aligned stock photos`
+
+### Test Results
+- `pnpm tsc --noEmit` — PASS (no errors)
+- `pnpm build` — PASS (clean compilation)
+
+### Remaining Work
+- Visual review of all hero images in context
+- User approval for final hero image selections

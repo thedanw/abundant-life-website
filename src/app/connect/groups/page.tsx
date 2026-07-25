@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Button from "@/components/Button";
 import Card from "@/components/Card";
 
@@ -50,7 +51,21 @@ export default function GroupsPage() {
   return (
     <main id="main-content" className="flex-1">
       {/* Hero */}
-      <section className="bg-[var(--color-primary)] py-[var(--space-4xl)]">
+      <section className="relative isolate overflow-hidden bg-[var(--color-primary)] py-[var(--space-4xl)]">
+        {/* Background image */}
+        <Image
+          src="/abundant-life-website/images/hero/groups-hero.webp"
+          alt="Abundant Life Centre Mareeba church congregation"
+          fill
+          priority
+          className="object-cover object-[center_35%] -z-10"
+          sizes="100vw"
+        />
+        {/* Dark overlay */}
+        <div
+          className="absolute inset-0 -z-[5]"
+          style={{ backgroundColor: "color-mix(in oklab, #006747 65%, transparent)" }}
+        />
         <div className="prose mx-auto max-w-[var(--container-max)] px-[var(--space-md)] text-center md:px-[var(--space-xl)]">
           <h1 className="text-[var(--color-text-white)]">
             Groups — Find Your People

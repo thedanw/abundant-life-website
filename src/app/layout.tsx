@@ -37,9 +37,16 @@ export const metadata: Metadata = {
   authors: [{ name: "Abundant Life Centre Mareeba" }],
   icons: {
     icon: [
+      { url: "/abundant-life-website/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/abundant-life-website/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/abundant-life-website/images/brand/AbundantLife-Emblem.svg", type: "image/svg+xml" },
     ],
-    apple: "/abundant-life-website/images/brand/AbundantLife-Emblem.svg",
+    apple: [
+      { url: "/abundant-life-website/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      { url: "/abundant-life-website/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+    ],
   },
   openGraph: {
     type: "website",
@@ -48,6 +55,14 @@ export const metadata: Metadata = {
     title: "Abundant Life Centre Mareeba | Church in Mareeba, QLD",
     description:
       "Welcome to Abundant Life Centre Mareeba — a spirit-filled, evangelical church in the heart of Mareeba, Queensland.",
+    images: [
+      {
+        url: "/abundant-life-website/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Abundant Life Centre Mareeba",
+      },
+    ],
   },
 };
 
@@ -115,8 +130,9 @@ export default function RootLayout({
         />
         {/* Favicon */}
         <link rel="icon" type="image/svg+xml" href="/abundant-life-website/images/brand/AbundantLife-Emblem.svg" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/abundant-life-website/images/brand/AbundantLife-Emblem-32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/abundant-life-website/images/brand/AbundantLife-Emblem-180.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/abundant-life-website/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/abundant-life-website/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/abundant-life-website/apple-touch-icon.png" />
       </head>
       <body className="min-h-full flex flex-col">
         <SkipLink />

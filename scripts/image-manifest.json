@@ -1,0 +1,82 @@
+[
+  {
+    "originalUrl": "https://lh3.googleusercontent.com/drUfdguHmC248GZci20RKcmB0fzrMayO1C_nP1yzZzCxn53trqwtKSuo5oYvDq0QL57EsaAJx3uItvWo_A",
+    "localPath": "public/images/about/church-congregation.webp",
+    "alt": "Congregation at Abundant Life Centre Mareeba during Sunday worship service",
+    "category": "about",
+    "maxWidth": 1920,
+    "context": "Appears on homepage, about-us, events, prayer, contact-us pages"
+  },
+  {
+    "originalUrl": "https://lh3.googleusercontent.com/pJtq-3cDFyWtyXAfsGlfe5YzkQ-yus2CW7ZQh-0pX2xnut4dP8gjjpJcpFeD5TpknEEujpY8Zbo-dlvGqFM=s100",
+    "localPath": "public/images/backgrounds/verse-the-way-truth-life.webp",
+    "alt": "Bible verse background — I am the way the truth and the life John 14:6",
+    "category": "backgrounds",
+    "maxWidth": 800,
+    "context": "Verse image background used on multiple pages"
+  },
+  {
+    "originalUrl": "https://lh3.googleusercontent.com/PXQAaxsm8PkNPHXQ3Sm5xph9oCRgGeqJ5LFRZUAX6aWECgRonhisIZUtJ8qn1CSI_ftnBew3sPqfohj5=s100",
+    "localPath": "public/images/backgrounds/verse-i-am-that-i-am.webp",
+    "alt": "Bible verse background — I Am That I Am Exodus 3:14",
+    "category": "backgrounds",
+    "maxWidth": 800,
+    "context": "Verse image background used on multiple pages"
+  },
+  {
+    "originalUrl": "https://lh3.googleusercontent.com/mXo58BlzC3gWamaoTyBMNu_xvgW14PzKhaCxbJDy1x7_f8o_6aMrfghrqS1JiLh7mYWTyAtD3nE-JVie=s100",
+    "localPath": "public/images/backgrounds/verse-abundant-life.webp",
+    "alt": "Bible verse background — I have come that they may have life abundantly John 10:10",
+    "category": "backgrounds",
+    "maxWidth": 800,
+    "context": "Verse image background used on multiple pages"
+  },
+  {
+    "originalUrl": "https://lh3.googleusercontent.com/G7RRmClY3L1XmnwSpbA2erS6EhGruHSK3rJ66DyJeasEkpt168sEhiz_8YVYtsnq98YTcVHdHnUoRWFvl6o",
+    "localPath": "public/images/missions/alphacrucis-college.webp",
+    "alt": "Alphacrucis College logo — Christian tertiary education partner of Abundant Life Centre",
+    "category": "missions",
+    "maxWidth": 400,
+    "context": "Missions partner logo on missions page"
+  },
+  {
+    "originalUrl": "https://lh3.googleusercontent.com/Pobt6ZJJHBeWN6SR6Y7hghwfioO7TOb1GP9A0OAieVkZcSWK94w3QpHekzuadN4UoajlapM_jMz1Zddz8g",
+    "localPath": "public/images/missions/living-waters-village.webp",
+    "alt": "Living Waters Village logo — orphan care ministry in Borneo",
+    "category": "missions",
+    "maxWidth": 400,
+    "context": "Missions partner logo on missions page"
+  },
+  {
+    "originalUrl": "https://lh3.googleusercontent.com/a-baPEpJd3tCwTtzHqUATP1o5SfItkDUy8AY72a_kMWExIbSaKvUnAmTlloAEnaeLnc1mLEcQwnA4htizDM",
+    "localPath": "public/images/missions/gideons-international.webp",
+    "alt": "Gideons International logo — Bible distribution ministry",
+    "category": "missions",
+    "maxWidth": 400,
+    "context": "Missions partner logo on missions page"
+  },
+  {
+    "originalUrl": "https://lh3.googleusercontent.com/8pkmO3kR6xAwEMqMt9INfCAlionRFVypcX8LBrL44uJ-SN6JqBfAFaxrEcQrawvhgLh8pyNHjJ1b-gL-lg",
+    "localPath": "public/images/missions/imla.webp",
+    "alt": "IMLA — Indigenous Ministry Links Australia logo",
+    "category": "missions",
+    "maxWidth": 400,
+    "context": "Missions partner logo on missions page"
+  },
+  {
+    "originalUrl": "https://lh3.googleusercontent.com/6IFwiQSVkknMCEq3WnQLGSmCoxg-XfEVT5jq67xHUdKr5oj5grmfliYxT7cmZJ69sLhDpnzoATrut8hq6FI",
+    "localPath": "public/images/missions/su-queensland.webp",
+    "alt": "SU Queensland — Scripture Union school chaplaincy logo",
+    "category": "missions",
+    "maxWidth": 400,
+    "context": "Missions partner logo on missions page"
+  },
+  {
+    "originalUrl": "https://lh3.googleusercontent.com/TM8ukaOLW5MvL255Vu45cXqcU4nta36YrGV9oPefYaiXhNArHwTPTJYfEduH7cZ13ymb7rxH5ROWER2e",
+    "localPath": "public/images/missions/apostlenet.webp",
+    "alt": "ApostleNet International — global apostolic network logo",
+    "category": "missions",
+    "maxWidth": 400,
+    "context": "Missions partner logo on missions page"
+  }
+]

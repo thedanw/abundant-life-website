@@ -148,6 +148,100 @@ what it does, how it works, and any potential issues you might find."
 "Analyze this code: explain what it does, how it works, and flag any issues."
 ```
 
+### 8. Stock Photo Strategy Pattern
+
+For generating a strategy to find high-quality, non-cliché hero images for each page of a website, grounded in page content, SEO strategy, brand voice, and visual brand guidelines.
+
+```
+You are a visual brand strategist and art director for {church_name}, a {denomination} church in {location}.
+
+## Context
+
+You are sourcing hero images for the following pages (EXCEPT the home page — keep the existing hero image):
+{list_of_pages_with_descriptions}
+
+## Brand Voice Reference
+
+{content_of_BRAND_VOICE.md}
+
+## Visual Brand Guidelines Reference
+
+{content_of_BRAND_VISUAL_GUIDELINES.md}
+
+## Page Content & SEO Strategy
+
+For each page, here is the content, target audience, and SEO keywords:
+{page_content_and_seo_keywords_per_page}
+
+## Task
+
+For EACH page (except home), generate a stock photo strategy that includes:
+
+1. **Visual Concept** — Describe the ideal hero image in concrete, non-cliché terms. Avoid:
+   - Empty pews or church buildings (too generic)
+   - Hands raised in isolation (overused)
+   - Sunsets/sunrises with crosses (cliché)
+   - People looking at cameras with forced smiles (stock-photo feel)
+   - Solitary figures in dramatic lighting (too commercial)
+
+2. **Authentic Alternatives** — Prefer:
+   - Candid moments of real community interaction (laughing, serving, listening)
+   - Diverse ages and ethnicities interacting naturally
+   - Local Far North Queensland / Tablelands scenery (bushland, cane fields, rural landscapes)
+   - Warm, inviting environments with natural light
+   - Action shots: people serving, children playing, hands working together
+   - Details that tell a story: coffee cups, open Bibles, musical instruments, community garden
+
+3. **Color Palette Alignment** — Map the image's dominant colors to the brand palette:
+   - Primary `#006747` (deep green) — growth, life, nature
+   - Secondary `#c4916c` (warm gold) — welcome, warmth
+   - Accent Sage `#9cba9e` — subtle, calm backgrounds
+   - Accent Gold `#fed26f` — celebration, joy
+   Ensure the image's dominant tones harmonize with these colors.
+
+4. **Search Query** — Write 3-5 specific, non-cliché search queries for the stock-photo-finder skill. Include:
+   - Location context (Far North Queensland, Tablelands, Mareeba)
+   - Activity/emotion (not just "church" or "worship")
+   - Composition (wide shot, candid, detail, environmental portrait)
+   - Lighting/mood (warm natural light, golden hour, soft diffused)
+
+5. **Image Technical Requirements**:
+   - Minimum 1920×1080px (16:9) for hero
+   - WebP format preferred
+   - File size under 200KB after compression
+   - Licensed for commercial use (CC0, Pixabay, Unsplash, Pexels)
+
+## Output Format
+
+```markdown
+# Hero Image Strategy — {Page Name}
+
+**URL**: `/{page-slug}`
+
+## Visual Concept
+{2-3 sentence description of the ideal image}
+
+## Color Harmony
+- Dominant tones: {list colors}
+- Brand palette match: {which brand colors these map to}
+
+## Search Queries
+1. "{specific search query 1}"
+2. "{specific search query 2}"
+3. "{specific search query 3}"
+
+## Why This Works
+{1-2 sentences connecting the image to the page's content, SEO keywords, brand voice pillar, and visual guidelines}
+
+---
+
+```
+
+## Execution
+
+After generating the strategy for all pages, use the stock-photo-finder skill to execute the search queries and find actual images. For each page, select the best match and provide the image URL, license type, and a brief rationale for why it fits.
+```
+
 ## Best Practices
 
 - ✅ **Do:** Always specify the output format (JSON, markdown, plain text, bullet list)

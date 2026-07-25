@@ -673,15 +673,257 @@ export default function NotFound() {
 - [ ] **Commit:** `feat: add utility pages (Plan Visit, Give, Media, Contact, 404)`
 ````
 
-### Batch 8: Image Optimization & Assets
-- [ ] Task 8.1: Download and optimize scraped images
-  Run: Script to download images from Jina AI results, compress, convert to WebP
-- [ ] Task 8.2: Create responsive image components
-  Code: `src/components/ResponsiveImage.tsx` — with lazy loading, srcset
-- [ ] Task 8.3: Add images to pages
-  Code: Update page files with optimized images
-- [ ] Task 8.4: Create favicon and meta images
-  Code: `public/` — favicon.ico, og-image.png, etc.
+### Batch 8: Image Optimization & Assets (RSCIT-Optimized Prompt)
+
+> **Note:** This batch is written as an RSCIT-optimized agent prompt. Copy the block below and use it as your instruction to an AI coding agent.
+
+`````markdown
+## R — Role
+You are a senior front-end developer and Jina AI scraping specialist. You are executing Batch 8 of a website redesign for **Abundant Life Centre Mareeba** — a Next.js 14+ App Router project with TypeScript and Tailwind CSS.
+
+## S — Situation
+The existing website at `http://www.abundantlifemareeba.org.au/` is built on Wix, which serves images through **Google's CDN** (`lh3.googleusercontent.com`). Every image URL follows this pattern:
+
+```
+https://lh3.googleusercontent.com/<image-id>=s###   ← where ### is pixel width
+```
+
+**⚠️ CRITICAL WIX IMAGE STRATEGY:**
+- The images are hosted on `lh3.googleusercontent.com` (Google's image serving infrastructure), NOT `wixstatic.com`
+- Each URL ends with `=s###` (e.g., `=s50`, `=s80`, `=s100`, `=s260`) — this is a **size constraint** that limits the image width in pixels
+- To get the **original full-resolution image**, replace the `=s###` suffix with **`=s0`** (zero means "original size")
+- **Why `=s0` is best**: It preserves the original resolution, letting our own optimization pipeline (sharp/Pillow) control the exact dimensions and compression. Using `=s1920` would download a pre-scaled version that may have quality loss from Wix's compression on top of our own.
+- **Edge case**: If a URL has NO `=s###` suffix, it's already at original resolution — leave it as-is.
+
+These images need to be:
+1. **Discovered** — scraped from the live site using Jina AI tools
+2. **Downloaded at full resolution** — by transforming `=s###` → `=s0`
+3. **Optimized** — compressed, converted to WebP, sized appropriately via our own tooling
+4. **Integrated** — placed into the Next.js project with responsive components
+5. **Referenced** — added to all 14 page routes
+
+The project already has:
+- **Image folders** at `public/images/` with subdirectories: `about/`, `backgrounds/`, `brand/`, `connect/`, `events/`, `hero/`, `media/`, `missions/`, `sermons/`, `team/`
+- **Existing images**: Hero background (`hero/abundant-life-church-worship-sundays.webp`), brand logos (SVG)
+- **Image usage pattern**: `next/image` with `fill`, `priority`, `sizes="100vw"`, `className="object-cover"` (see `src/components/homepage/Hero.tsx`)
+- **Brand colors**: `--color-primary: #006747` (green), `--color-secondary: #c4916c` (brown), `--color-accent-sage: #9cba9e`, `--color-accent-gold: #fed26f`
+- **Font**: DM Sans
+- **Component catalog**: `.agents/COMPONENT_CATALOG.md` documents all existing components
+- **All 14 page routes exist** in `src/app/` — they need images added
+- **Planning content** in `planning/pages/` — each `.md` file has a `## ✍️ REWRITE` section with the page copy
+
+## C — Constraints
+1. **All images MUST be WebP format** — convert any JPG/PNG to WebP
+2. **Use `next/image` exclusively** — never `<img>` tags
+3. **Responsive images** — use `sizes`, `srcSet` where multiple resolutions exist
+4. **Lazy loading** — use `loading="lazy"` for all non-hero images
+5. **Hero images** — use `priority` + `fill` pattern (see `Hero.tsx`)
+6. **Alt text** — every image MUST have descriptive, SEO-friendly alt text
+7. **File naming** — kebab-case, descriptive: `pastor-john-doe.webp`, `youth-group-event.webp`
+8. **Max image width** — 1920px for full-width, 800px for content images
+9. **Keep file sizes under 100KB** where possible (compress aggressively)
+10. **Brand logos** — keep as SVG (already optimized), do NOT convert to WebP
+11. **Do NOT delete `.gitkeep` files** in empty image directories
+12. **Path prefix** — all image paths start with `/abundant-life-website/` (e.g., `/abundant-life-website/images/hero/photo.webp`)
+
+## I — Instructions
+
+### Step 1: Discover all images on the live website
+Use Jina AI's `mcp_jina_ai_offic_read_url` tool with `withAllImages: true` to scrape every page of `http://www.abundantlifemareeba.org.au/`. Scrape ALL of these pages:
+- `http://www.abundantlifemareeba.org.au/` (home)
+- `http://www.abundantlifemareeba.org.au/about-us`
+- `http://www.abundantlifemareeba.org.au/what-we-believe`
+- `http://www.abundantlifemareeba.org.au/plan-your-visit`
+- `http://www.abundantlifemareeba.org.au/give`
+- `http://www.abundantlifemareeba.org.au/watch`
+- `http://www.abundantlifemareeba.org.au/contact-us`
+- `http://www.abundantlifemareeba.org.au/connect`
+- `http://www.abundantlifemareeba.org.au/connect/events`
+- `http://www.abundantlifemareeba.org.au/connect/groups`
+- `http://www.abundantlifemareeba.org.au/connect/missions`
+- `http://www.abundantlifemareeba.org.au/connect/prayer`
+- `http://www.abundantlifemareeba.org.au/connect/serve`
+
+For each page, extract:
+- All `<img>` tag `src` attributes
+- All CSS `background-image` URLs
+- Alt text from `<img>` tags
+- The context/position of each image on the page
+
+Use `mcp_jina_ai_offic_parallel_read_url` to scrape multiple pages simultaneously for efficiency.
+
+**⚠️ URL TRANSFORMATION:** After collecting all image URLs, transform each one:
+- If the URL ends with `=s###` (e.g., `=s50`, `=s100`, `=s260`), replace with **`=s0`** to get the original full-resolution image
+- If the URL has NO `=s###` suffix, leave it as-is (it's already original)
+
+Example transformations:
+| Before | After |
+|--------|-------|
+| `https://lh3.googleusercontent.com/pJtq...=s100` | `https://lh3.googleusercontent.com/pJtq...=s0` |
+| `https://lh3.googleusercontent.com/CcxQ...=s80` | `https://lh3.googleusercontent.com/CcxQ...=s0` |
+| `https://lh3.googleusercontent.com/CcxQ...` (no suffix) | unchanged |
+
+### Step 2: Download and optimize scraped images
+For each unique image URL discovered:
+1. **Transform the URL**: Replace `=s###` suffix with `=s0` to get original resolution
+2. Download the image using a script (Node.js `fetch` or Python `requests`)
+3. Convert to WebP format using `sharp` (Node.js) or `Pillow` (Python)
+4. Resize to appropriate dimensions:
+   - Hero/banner images: 1920px wide
+   - Content images: 800px wide
+   - Thumbnails: 400px wide
+5. Compress to keep file size under 100KB
+6. Save to the correct `public/images/<category>/` subdirectory
+7. Use descriptive kebab-case filenames
+
+Create a download script at `scripts/download-images.mjs` (or `.py`) that:
+- Reads a JSON manifest of image URLs → local paths
+- Transforms each URL: replaces `=s###` with `=s0` before downloading
+- Downloads each image
+- Converts to WebP
+- Reports success/failure for each
+
+### Step 3: Create responsive image component
+Create `src/components/ResponsiveImage.tsx`:
+
+```tsx
+// ResponsiveImage — wrapper around next/image with sensible defaults
+// Props: src, alt, className?, width?, height?, fill?, priority?, sizes?, objectPosition?
+// Defaults: loading="lazy" (unless priority), sizes="100vw" if fill
+// Must handle: fill mode (default for full-width), fixed dimensions for content images
+```
+
+Requirements:
+- TypeScript with proper prop types
+- Default `loading="lazy"` (auto-set to `undefined` when `priority` is true)
+- Default `sizes="100vw"` when `fill` is true
+- Support `objectPosition` for focal point control
+- Include descriptive `alt` text (required prop, no default)
+- Export as default
+
+### Step 4: Add images to all 14 page routes
+Update each page in `src/app/` to include relevant images:
+
+| Page | Image Category | Suggested Images |
+|------|---------------|------------------|
+| `page.tsx` (home) | `hero/`, `about/` | Hero bg (already done), welcome section image |
+| `about-us/page.tsx` | `about/`, `team/` | Church exterior, pastor photos, congregation |
+| `what-we-believe/page.tsx` | `backgrounds/` | Faith-themed background |
+| `plan-your-visit/page.tsx` | `about/` | Church exterior, welcome |
+| `give/page.tsx` | `backgrounds/` | Giving-themed background |
+| `watch/page.tsx` | `media/`, `sermons/` | YouTube thumbnail placeholders |
+| `contact-us/page.tsx` | `about/` | Church exterior or map |
+| `connect/page.tsx` | `connect/` | Community-themed image |
+| `connect/events/page.tsx` | `events/` | Event photos |
+| `connect/groups/page.tsx` | `connect/` | Small group photo |
+| `connect/missions/page.tsx` | `missions/` | Mission trip photos |
+| `connect/prayer/page.tsx` | `backgrounds/` | Prayer-themed image |
+| `connect/serve/page.tsx` | `connect/` | Serving/volunteer photos |
+| `not-found.tsx` | `backgrounds/` | Subtle background (optional) |
+
+For each page:
+- Use `ResponsiveImage` component
+- Add relevant `next/image` or `ResponsiveImage` imports
+- Place images in semantically appropriate sections
+- Ensure proper heading hierarchy is maintained alongside images
+
+### Step 5: Create favicon and meta images
+Generate and place in `public/`:
+- `favicon.ico` — 32×32 (use the emblem SVG as source)
+- `og-image.png` — 1200×630 Open Graph image (branded with church name + logo)
+- `apple-touch-icon.png` — 180×180
+- `favicon-16x16.png` — 16×16
+- `favicon-32x32.png` — 32×32
+
+Update `src/app/layout.tsx` to include all favicon and OG meta tags.
+
+## T — Template
+
+### Image Manifest Format (for download script)
+```json
+[
+  {
+    "originalUrl": "https://lh3.googleusercontent.com/pJtq-3cDFyWtyXAfsGlfe5YzkQ-yus2CW7ZQh-0pX2xnut4dP8gjjpJcpFeD5TpknEEujpY8Zbo-dlvGqFM=s100",
+    "downloadUrl": "https://lh3.googleusercontent.com/pJtq-3cDFyWtyXAfsGlfe5YzkQ-yus2CW7ZQh-0pX2xnut4dP8gjjpJcpFeD5TpknEEujpY8Zbo-dlvGqFM=s0",
+    "localPath": "public/images/about/church-exterior.webp",
+    "alt": "Abundant Life Centre Mareeba church building exterior",
+    "category": "about",
+    "maxWidth": 1920,
+    "context": "about-us page hero section"
+  }
+]
+```
+
+### ResponsiveImage Component Signature
+```tsx
+interface ResponsiveImageProps {
+  src: string;
+  alt: string;
+  className?: string;
+  width?: number;
+  height?: number;
+  fill?: boolean;
+  priority?: boolean;
+  sizes?: string;
+  objectPosition?: string;
+}
+```
+
+### Page Update Pattern
+```tsx
+import ResponsiveImage from "@/components/ResponsiveImage";
+
+// In JSX:
+<section className="relative h-[400px]">
+  <ResponsiveImage
+    src="/abundant-life-website/images/about/church-exterior.webp"
+    alt="Abundant Life Centre Mareeba church building"
+    fill
+    priority
+    objectPosition="center 40%"
+  />
+  {/* overlay content */}
+</section>
+```
+
+### Favicon Meta Tags (in layout.tsx)
+```tsx
+export const metadata = {
+  icons: {
+    icon: [
+      { url: "/abundant-life-website/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/abundant-life-website/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/abundant-life-website/favicon.ico", sizes: "any" },
+    ],
+    apple: { url: "/abundant-life-website/apple-touch-icon.png", sizes: "180x180" },
+  },
+  openGraph: {
+    images: [{ url: "/abundant-life-website/og-image.png", width: 1200, height: 630 }],
+  },
+};
+```
+
+## Quality Gate
+Before marking Batch 8 complete:
+- [ ] All images from live site have been scraped, downloaded, and optimized
+- [ ] Every image URL was transformed: `=s###` → `=s0` for maximum resolution
+- [ ] Every image is WebP format (except SVGs)
+- [ ] `ResponsiveImage.tsx` component created and exported
+- [ ] All 14 pages have relevant images added
+- [ ] Hero image has `priority`, all others have `loading="lazy"`
+- [ ] Every image has descriptive alt text
+- [ ] Favicon and OG images exist in `public/`
+- [ ] `layout.tsx` has favicon and OG meta tags
+- [ ] No broken image paths (run `pnpm build` to verify)
+- [ ] File sizes under 100KB per image
+- [ ] **Commit:** `feat: add optimized images and responsive image component`
+`````
+
+- [ ] **Task 8.1:** Execute Step 1 — Scrape all images from live site via Jina AI
+- [ ] **Task 8.2:** Execute Step 2 — Download and optimize scraped images
+- [ ] **Task 8.3:** Execute Step 3 — Create `ResponsiveImage.tsx` component
+- [ ] **Task 8.4:** Execute Step 4 — Add images to all 14 page routes
+- [ ] **Task 8.5:** Execute Step 5 — Create favicon and meta images
 - [ ] **Commit:** `feat: add optimized images and responsive image component`
 
 ### Batch 9: SEO & Schema Markup
