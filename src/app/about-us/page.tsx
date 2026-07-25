@@ -49,9 +49,71 @@ export default function AboutUsPage() {
       {/* Our Leadership */}
       <section id="our-leadership" className="mx-auto max-w-[var(--container-max)] px-[var(--space-md)] py-[var(--space-3xl)] md:px-[var(--space-xl)]">
         <h2 className="mb-[var(--space-lg)]">Our Leadership</h2>
-        <p className="max-w-3xl text-[var(--color-text-primary)] leading-relaxed">
-          On the 6th of January 1997, <strong>Ps Darryl &amp; Patricia Roos</strong> accepted the Senior Pastors role and continue to lead the house today. Their tenure shows God&apos;s faithfulness and the strength of the ALC family.
-        </p>
+        
+        {/* Leadership Team */}
+        <div className="grid gap-[var(--space-lg)] md:grid-cols-2 lg:grid-cols-3 mt-[var(--space-xl)]">
+          {/* Couple 1: Darryl & Patricia Roos (Real) */}
+          <div className="flex flex-col items-center text-center space-y-[var(--space-sm)]">
+            <Image
+              src="https://lh3.googleusercontent.com/1b8zxTtmPk-eQmdWPEk5yeCdha7DUkcXkWIPfsujBUpQDTcuYUetdRp--hcZ3jt37usGiLDS6rdN23RIeBg=s1240"
+              alt="Ps Darryl & Patricia Roos"
+              width={300}
+              height={300}
+              className="rounded-full object-cover w-[200px] h-[200px]"
+            />
+            <div className="space-y-[var(--space-xs)]">
+              <h3 className="font-semibold text-[var(--color-text-primary)]">Ps Darryl & Patricia Roos</h3>
+              <p className="text-[var(--color-text-muted)] text-sm">
+                On the 6th of January 1997, **Ps Darryl & Patricia Roos**accepted the Senior Pastors role and continue to lead the house today. Their tenure shows God's faithfulness and the strength of the ALC family.
+              </p>
+            </div>
+          </div>
+          
+          {/* Couple 2: Placeholder */}
+          <div className="flex flex-col items-center text-center space-y-[var(--space-sm)]">
+            <Image
+              src="https://img.magnific.com/premium-vector/couple-silhouettes-user-profile-icon_1233986-37261.jpg?semt=ais_hybrid&w=740&q=80"
+              alt="Leadership Couple"
+              width={300}
+              height={300}
+              className="rounded-full object-cover w-[200px] h-[200px]"
+            />
+            <div className="space-y-[var(--space-xs)]">
+              <h3 className="font-semibold text-[var(--color-text-primary)]">Lorem Ipsum</h3>
+              <p className="text-[var(--color-text-muted)] text-sm">Leadership Couple</p>
+            </div>
+          </div>
+          
+          {/* Couple 3: Placeholder */}
+          <div className="flex flex-col items-center text-center space-y-[var(--space-sm)]">
+            <Image
+              src="https://img.magnific.com/premium-vector/couple-silhouettes-user-profile-icon_1233986-37261.jpg?semt=ais_hybrid&w=740&q=80"
+              alt="Leadership Couple"
+              width={300}
+              height={300}
+              className="rounded-full object-cover w-[200px] h-[200px]"
+            />
+            <div className="space-y-[var(--space-xs)]">
+              <h3 className="font-semibold text-[var(--color-text-primary)]">Lorem Ipsum</h3>
+              <p className="text-[var(--color-text-muted)] text-sm">Leadership Couple</p>
+            </div>
+          </div>
+          
+          {/* Couple 4: Placeholder */}
+          <div className="flex flex-col items-center text-center space-y-[var(--space-sm)]">
+            <Image
+              src="https://img.magnific.com/premium-vector/couple-silhouettes-user-profile-icon_1233986-37261.jpg?semt=ais_hybrid&w=740&q=80"
+              alt="Leadership Couple"
+              width={300}
+              height={300}
+              className="rounded-full object-cover w-[200px] h-[200px]"
+            />
+            <div className="space-y-[var(--space-xs)]">
+              <h3 className="font-semibold text-[var(--color-text-primary)]">Lorem Ipsum</h3>
+              <p className="text-[var(--color-text-muted)] text-sm">Leadership Couple</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Our History */}
