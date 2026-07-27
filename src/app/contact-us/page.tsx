@@ -34,8 +34,8 @@ export default function ContactUsPage() {
       <section className="relative isolate overflow-hidden bg-[var(--color-primary)] py-[var(--space-4xl)] lg:py-[var(--space-5xl)]">
         {/* Background image */}
         <Image
-          src="/abundant-life-website/images/hero/contact-us-hero.webp"
-          alt="Abundant Life Centre Mareeba church congregation"
+          src="/abundant-life-website/images/backgrounds/verse-abundant-life.webp"
+          alt="Mareeba landscape"
           fill
           priority
           className="object-cover object-[center_35%] -z-10"
